@@ -58,6 +58,18 @@ public class PermissionHandler {
             this.BLoggedIn = true;
         }
         if(s.equals("transporter")){
+            this.BRemoveTrip = false;
+            this.BViewTrip = false;
+            this.BNodeView = false;
+            this.BAddTrip = false;
+            this.BViewException = false;
+            this.BEndException = false;
+            this.BViewHistory = false;
+            this.BSetupNewPlant = false;
+            this.BPlantModify = false;
+            this.BAddUser = false;
+            this.BModifyUser = false;
+            this.BChangeCurrentPlant = false;
             this.BAddVehicle = true;
             this.BModifyVehicle = true;
             this.BModifyDriver = true;

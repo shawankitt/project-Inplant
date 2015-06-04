@@ -4,6 +4,7 @@
     Author     : Raj-HP
 --%>
 
+<%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <%@page import="hibernate.helper.EposList"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
@@ -79,7 +80,7 @@
                             <input type="hidden" name="addepos" id="addepos" value=""/>
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="addpath" value="Add to path" onClick = "addPath()" />            
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Paths" onClick = "pathaction(this)" />
-                            <input type="button" name="next"class="btn btn-success col-sm-12"  id="next" value="Submit And Next Page" onClick = "pathaction(this)" />
+                            <input type="button" name="next" class="btn btn-success col-sm-12"  id="next" value="Submit And Next Page" onClick = "pathaction(this)" />
                         </div>
                     </form>
                 </div>
