@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h2>Path</h2>
+                    <h2 style="text-align: center">Path</h2>
                 </div>
             </div>
             <div class="row">
@@ -71,6 +71,7 @@
                                 }
                             %>
                         </select>
+                        <br><br>
                     </div>
                     <form name="path" action="" method="post">
                         <div class="form-group">
@@ -78,8 +79,8 @@
                             <input class="form-control" type="text" name="TName"/><br>
                             <input type="hidden" name="Id" id="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString()); %>" >
                             <input type="hidden" name="addepos" id="addepos" value=""/>
-                            <input type="button" class="btn btn-info col-sm-12" name="add" id="addpath" value="Add to path" onClick = "addPath()" />            
-                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Paths" onClick = "pathaction(this)" />
+                            <input type="button" class="btn btn-info col-sm-12" name="add" id="addpath" value="Add to path" onClick = "addPath()" /><br><br>          
+                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Paths" onClick = "pathaction(this)" /><br><br>
                             <input type="button" name="next" class="btn btn-success col-sm-12"  id="next" value="Submit And Next Page" onClick = "pathaction(this)" />
                         </div>
                     </form>

@@ -19,7 +19,7 @@
     </head>
     <div class="container">
         <div class="jumbotron">
-            <div class="h1">Login Here</div>
+            <h2 style="text-align: center">Login Here</h2>
         </div>
         <br><br><br>
         <div class="row">

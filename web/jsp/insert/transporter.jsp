@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h1>Transporter</h1>
+                    <h2 style="text-align: center">Transporter</h2>
                 </div>
             </div>
             <div class="row">

@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h2>Process</h2>
+                    <h2 style="text-align: center">Process</h2>
                 </div>
             </div>
             <script>
@@ -58,8 +58,8 @@
                         <div class="form-group">
                             <input  type="hidden" name="Id" value="<%out.print(user.getTblPlant().getIPlantId().toString());%>"/>
                             <label>Process Name : </label>
-                            <input class="form-control" type="text" name="processname"  placeholder="Enter Process Name" onfocus="hide(this)" onblur="show(this, 'Enter Process Name')"/>
-                            <input type="button" class="btn btn-info col-sm-12"  name="add" id="add" value="Add More Process" onClick = "processaction(this)" />
+                            <input class="form-control" type="text" name="processname"  placeholder="Enter Process Name" onfocus="hide(this)" onblur="show(this, 'Enter Process Name')"/><br>
+                            <input type="button" class="btn btn-info col-sm-12"  name="add" id="add" value="Add More Process" onClick = "processaction(this)" /><br><br>
                             <input type="button" name="next" id="next" class="btn btn-success col-sm-12"  value="Submit And Next Page" onClick = "processaction(this)" />
                         </div>
                     </form>

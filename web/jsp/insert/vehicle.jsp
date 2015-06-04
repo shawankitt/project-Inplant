@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h2>Vehicle</h2>
+                    <h2 style="text-align: center">Vehicle</h2>
                 </div>
             </div>
 
@@ -66,17 +66,17 @@
                         <div class="form-group">
                             <input type="hidden" name="Id" value="<%out.print(user.getTblPlant().getIPlantId().toString());%>" ><br>
                             <label>Vehicle Id:  </label>
-                            <input type="text" class="form-control" name="vid" placeholder="Enter Vehicle Id" onfocus="hide(this)" onblur="show(this, 'Enter Vehicle Id')"/>
+                            <input type="text" class="form-control" name="vid" placeholder="Enter Vehicle Id" onfocus="hide(this)" onblur="show(this, 'Enter Vehicle Id')"/><br>
                             <label>Chasis No:  </label>
-                            <input type="text" class="form-control" name="TChasisNo" placeholder="Enter Chasis No" onfocus="hide(this)" onblur="show(this, 'Enter Chasis No')"/>
+                            <input type="text" class="form-control" name="TChasisNo" placeholder="Enter Chasis No" onfocus="hide(this)" onblur="show(this, 'Enter Chasis No')"/><br>
                             <label>Vehicle Type: </label>
-                            <input type="text" class="form-control" name="TVehicleType" placeholder="Enter Vehicle Type" onfocus="hide(this)" onblur="show(this, 'Enter Vehicle Type')"/>
+                            <input type="text" class="form-control" name="TVehicleType" placeholder="Enter Vehicle Type" onfocus="hide(this)" onblur="show(this, 'Enter Vehicle Type')"/><br>
                             <label>Loading Capacity: </label>
-                            <input type="text" class="form-control" name="ILoadCapacity" placeholder="Enter Loading Capacity" onfocus="hide(this)" onblur="show(this, 'Enter Loading Capacity')"/>
+                            <input type="text" class="form-control" name="ILoadCapacity" placeholder="Enter Loading Capacity" onfocus="hide(this)" onblur="show(this, 'Enter Loading Capacity')"/><br>
                             <label>National Permit:   </label>
-                            <input type="text" class="form-control" name="TNationalPermit" placeholder="Enter National Permit" onfocus="hide(this)" onblur="show(this, 'Enter National Permit')"/>
+                            <input type="text" class="form-control" name="TNationalPermit" placeholder="Enter National Permit" onfocus="hide(this)" onblur="show(this, 'Enter National Permit')"/><br>
                             <label>License Expiry Date: </label>
-                            <input type="date" class="form-control" name="dtLicenseExpiryDate"/>
+                            <input type="date" class="form-control" name="dtLicenseExpiryDate"/><br><br>
                             <input type="hidden" name="TOwner" id="TOwner" value="" >
                         </div>
                     </form>
@@ -91,10 +91,11 @@
                                 }
                             %>
                         </select>
+                        <br><br>
                     </div>
                     <form>
                         <div class="form-group">
-                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Vehicle" onClick = "vehicleaction(this)" />
+                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Vehicle" onClick = "vehicleaction(this)" /><br><br>
                             <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "vehicleaction(this)" />
                         </div>
                     </form>

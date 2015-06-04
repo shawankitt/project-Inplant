@@ -51,7 +51,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h2>LInks</h2>
+                    <h2 style="text-align: center">LInks</h2>
                 </div>
             </div>
             <%
@@ -72,6 +72,7 @@
                                 }
                             %>
                         </select>
+                        <br>
                         <select class="form-control" id="epos2" >
                             <%
                                 out.println("<option>Choose Epos To</option>");
@@ -80,6 +81,7 @@
                                 }
                             %>
                         </select>
+                        <br>
                     </div>
                     <form role="form" name="link" action="" method="post">
                         <div class="form-group">
@@ -88,7 +90,7 @@
                             <input type="hidden" name="to" id="to" value=""/>
                             <label>Expected Time Between Them</label>
                             <input class="form-control" type="text" name="timeinbetween" placeholder="Enter Time in Minutes" onfocus="hide(this)" onblur="show(this, 'Enter Time in MInutes')"/><br>
-                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Links" onClick = "linkaction(this)" />
+                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Links" onClick = "linkaction(this)" /><br><br>
                             <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "linkaction(this)" />
                         </div>
                     </form>

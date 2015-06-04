@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
-                    <h2>Driver</h2>
+                    <h2 style="text-align: center">Driver</h2>
                 </div>
             </div>
             <script>

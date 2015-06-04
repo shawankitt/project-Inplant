@@ -15,6 +15,17 @@
             <result>/jsp/Mapping.jsp</result>
         </action>
         
+        <action name="loggedIn-AddVehicle" >
+            <result>/jsp/AddVehicle.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddDriver">
+            <result>/jsp/AddDriver.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddTransporter" >
+            <result>/jsp/AddTransporter.jsp</result>
+        </action>
         
         <action name="loggedIn-*" >
             <result name="success">/jsp/{1}.jsp</result>
@@ -85,6 +96,15 @@
         </action>
        <action name="insertuser" class="struts.action.UserInsertAction" method="execute">
             <result name="Success">/jsp/AddUser.jsp</result>
+        </action>
+        <action name="AddDriver" class="struts.action.DriverInsertAction" method="execute">
+            <result name="Success">/jsp/AddDriver.jsp</result>
+        </action>
+        <action name="AddVehicle" class="struts.action.VehicleInsertAction" method="execute">
+            <result name="Success">/jsp/AddVehicle.jsp</result>
+        </action>
+        <action name="Home">
+            <result>/jsp/ViewTrips.jsp</result>
         </action>
     </package>
 </struts>

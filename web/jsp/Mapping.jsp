@@ -15,13 +15,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery-min.js" type="text/javascript"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/jquery-min.js" type="text/javascript"></script>
         <title>Mapping</title>
     </head>
     <body>
-        <div id="top"><jsp:include page="Menu.jsp"/></div>
         <script>
             function xyz()
             {
@@ -103,12 +102,17 @@
                 }
                 return;
             }
+            function backhome()
+            {
+                document.mapping.action="Home";
+                document.mapping.submit();
+            }
         </script>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <div class="jumbotron">
-                        <h1>Mapping</h1>
+                        <h2 style="text-align: center">Mapping</h2>
                         <div class="form-group">
                             <label for="card">Card No. </label>
                             <select class="form-control" id="Card">
@@ -178,7 +182,8 @@
                                 <label>Date : </label>
                                 <input class="form-control" type="date" name="tdate">
                             </div>
-                            <input class="btn btn-primary" type="button" value="Start Trip" onClick="trip()">
+                            <input class="btn btn-primary col-sm-12" type="button" value="Start Trip" onClick="trip()"><br><br>
+                            <input type="button" class="btn btn-info col-sm-12" name="home" id="home" value="Home" onClick = "backhome(this)" />
                         </form>
                     </div>
                 </div>

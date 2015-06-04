@@ -70,7 +70,7 @@
     <div class="container">
         <div class="row">
             <div class="jumbotron">
-                <h1>Epos</h1>
+                <h2 style="text-align: center">Epos</h2>
             </div>
         </div>
         <div class="row">
