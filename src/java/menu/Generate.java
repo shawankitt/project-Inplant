@@ -113,7 +113,21 @@ public class Generate
         Permissions changePlant=new Permissions(temporary_canView, "Change Current Plant", "loggedIn-ChangePlant");
         settings.insertChild(changePlant);
         
+        // reports
+        Permissions reports = new Permissions(false,"Reports","#");
+        root.insertChild(reports);
         
+        temporary_canView=true;
+        Permissions aberrationReport = new Permissions(temporary_canView,"Aberration Report","loggedIn-ReportAberrationForm");
+        reports.insertChild(aberrationReport);
+        
+        temporary_canView=true;
+        Permissions MISDetentionReport = new Permissions(temporary_canView,"MIS Detention Report","loggedIn-ReportMISDetentionForm");
+        reports.insertChild(MISDetentionReport);
+        
+        temporary_canView=true;
+        Permissions dailyReport = new Permissions(temporary_canView,"Daily Report","loggedIn-ReportDailyForm");
+        reports.insertChild(dailyReport);
         
         //Password
         Permissions changePassword=new Permissions(true, "Change Password", "loggedIn-ChangePassword");
