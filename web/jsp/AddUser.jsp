@@ -11,113 +11,145 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/placeholder.js" type="text/javascript"></script>
+
+        <title>Add User</title>
     </head>
     <body>
-        
-        <div id="top"><jsp:include page="Menu.jsp"/></div>
-       <%
-            Map sesion = (Map)ActionContext.getContext().getSession();
-            hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
-       %>
-       <script>
-           function permission(name, bool)
-           {
-               document.getElementById(name).value=bool;document.getElementById(name).value=bool;
-           }
-           function useraction()
-           {
-               var pwd = document.getElementById("pwd").value;
-            var pwd2 = document.getElementById("pwd2").value;
-            if(pwd != pwd2)
+
+        <!--<div id="top"><jsp:include page="Menu.jsp"/></div>-->
+        <%
+            Map sesion = (Map) ActionContext.getContext().getSession();
+            hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers) sesion.get("user");
+        %>
+        <script>
+            function permission(name, bool)
             {
-                alert("passwaords dont match");
-                return;
+                document.getElementById(name).value = bool;
+                document.getElementById(name).value = bool;
             }
-            document.user.submit();
-           }
-       </script>
-       <form name="user" action="insertuser">
-           <input type="hidden" name="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString()); %>">
-           Username  :<input type="text" name="SUsername" value=""/><br>
-           Password  : <input type="password" id="pwd" name="SPassword" value="" /> <br>
-           Conform Password  : <input type="password" id="pwd2" name="cSPassword" value="" /> <br>
-           Permissions : <br>
-            Remove Trip :   <input type="radio" name="1" value="Yes" onClick="permission('BRemoveTrip' ,1)" />Yes
-                            <input type="radio" name="1" value="No" checked  onClick="permission('BRemoveTrip' ,0)"/>No
+            function useraction()
+            {
+                var pwd = document.getElementById("pwd").value;
+                var pwd2 = document.getElementById("pwd2").value;
+                if (pwd != pwd2)
+                {
+                    alert("passwaords dont match");
+                    return;
+                }
+                document.user.submit();
+            }
+        </script>
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3 jumbotron">
+
+            <form name="user" action="insertuser">
+                <div class="form-group">
+                    <div class="row">
+                        <input type="hidden" name="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString());%>">
+                        <label>Username  :</label>
+                        <input type="text" name="SUsername" class="form-control" value=""/><br>
+                        <label>Password  :</label>
+                        <input type="password" id="pwd" class="form-control" name="SPassword" value="" /> <br>
+                        <label>Confirm Password  : </label>
+                        <input type="password" id="pwd2" class="form-control" name="cSPassword" value="" /> <br>
+                        <label ><h4 style="text-align: center">Permissions : </h4></label>
+                        <br><br>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Remove Trip : <br>
+                            <input type="radio" class="radio-inline" name="1" value="Yes" onClick="permission('BRemoveTrip', 1)" />Yes
+                            <input type="radio"class="radio-inline" name="1" value="No" checked  onClick="permission('BRemoveTrip', 0)"/>No
                             <input type="hidden" name="BRemoveTrip" id="BRemoveTrip" value="0">
-                            <br>
-            View Trip :     <input type="radio" name="2" value="Yes" onClick="permission('BViewTrip' ,1)" />Yes
-                            <input type="radio" name="2" value="No" checked  onClick="permission('BViewTrip' ,0)"/>No
+                            <br><br>
+                            View Trip :  <br>   
+                            <input type="radio" class="radio-inline-inline" name="2" value="Yes" onClick="permission('BViewTrip', 1)" />Yes
+                            <input type="radio" name="2" value="No" checked  onClick="permission('BViewTrip', 0)"/>No
                             <input type="hidden" name="BViewTrip" id="BViewTrip" value="0">
-                            <br>
-            Add Trip :     <input type="radio" name="3" value="Yes" onClick="permission('BAddTrip' ,1)" />Yes
-                            <input type="radio" name="3" value="No" checked  onClick="permission('BAddTrip' ,0)"/>No
+                            <br><br>
+                            Add Trip :  <br>   <input type="radio" class="radio-inline-inline" name="3" value="Yes" onClick="permission('BAddTrip', 1)" />Yes
+
+                            <input type="radio" name="3" value="No" checked class="radio-inline" onClick="permission('BAddTrip', 0)"/>No
                             <input type="hidden" name="BAddTrip" id="BAddTrip" value="0">
-                            <br>
-            Add User :      <input type="radio" name="4" value="Yes" onClick="permission('BAddUser' ,1)" />Yes
-                            <input type="radio" name="4" value="No" checked  onClick="permission('BAddUser' ,0)"/>No
+                            <br><br>
+                            Add User : <br>     <input type="radio" name="4" class="radio-inline" value="Yes" onClick="permission('BAddUser', 1)" />Yes
+                            <input type="radio" name="4" value="No" checked  onClick="permission('BAddUser', 0)"/>No
                             <input type="hidden" name="BAddUser" id="BAddUser" value="0">
-                            <br>
-            Modify User :     <input type="radio" name="5" value="Yes" onClick="permission('BModifyUser' ,1)" />Yes
-                            <input type="radio" name="5" value="No" checked  onClick="permission('BModifyUser' ,0)"/>No
+                            <br><br>
+                            Modify User :   <br>  <input type="radio" name="5" class="radio-inline" value="Yes" onClick="permission('BModifyUser', 1)" />Yes
+                            <input type="radio" name="5" value="No" checked  onClick="permission('BModifyUser', 0)"/>No
                             <input type="hidden" name="BModifyUser" id="BModifyUser" value="0">
-                            <br>
-            Add Vehicle :     <input type="radio" name="6" value="Yes" onClick="permission('BAddVehicle' ,1)" />Yes
-                            <input type="radio" name="6" value="No" checked  onClick="permission('BAddVehicle' ,0)"/>No
+                            <br><br>
+                            Add Vehicle :  <br>   <input type="radio" name="6" class="radio-inline" value="Yes" onClick="permission('BAddVehicle', 1)" />Yes
+                            <input type="radio" name="6" value="No" checked  onClick="permission('BAddVehicle', 0)"/>No
                             <input type="hidden" name="BAddVehicle" id="BAddVehicle" value="0">
-                            <br>
-            Modify Vehicle :     <input type="radio" name="7" value="Yes" onClick="permission('BModifyVehicle' ,1)" />Yes
-                            <input type="radio" name="7" value="No" checked  onClick="permission('BModifyVehicle' ,0)"/>No
+                        </div>
+                      
+                        <div class="col-xs-4 col-xs-offset4">
+                            Modify Vehicle : <br>    <input type="radio" name="7" class="radio-inline" value="Yes" onClick="permission('BModifyVehicle', 1)" />Yes
+                            <input type="radio" name="7" value="No" checked  onClick="permission('BModifyVehicle', 0)"/>No
                             <input type="hidden" name="BModifyVehicle" id="BModifyVehicle" value="0">
-                            <br>
-            Add Driver :     <input type="radio" name="8" value="Yes" onClick="permission('BAddDriver' ,1)" />Yes
-                            <input type="radio" name="8" value="No" checked  onClick="permission('BAddDriver' ,0)"/>No
+                            <br><br>
+                            Add Driver :   <br>  <input type="radio" name="8" value="Yes" class="radio-inline" onClick="permission('BAddDriver', 1)" />Yes
+                            <input type="radio" name="8" value="No" checked  onClick="permission('BAddDriver', 0)"/>No
                             <input type="hidden" name="BAddDriver" id="BAddDriver" value="0">
-                            <br>
-            Modify Driver :     <input type="radio" name="9" value="Yes" onClick="permission('BModifyDriver' ,1)" />Yes
-                            <input type="radio" name="9" value="No" checked  onClick="permission('BModifyDriver' ,0)"/>No
+                            <br><br>
+                            Modify Driver :  <br>   <input type="radio" name="9" value="Yes" class="radio-inline" onClick="permission('BModifyDriver', 1)" />Yes
+                            <input type="radio" name="9" value="No" checked  onClick="permission('BModifyDriver', 0)"/>No
                             <input type="hidden" name="BModifyDriver" id="BModifyDriver" value="0">
-                            <br>
-            Setup New Plant :     <input type="radio" name="10" value="Yes" onClick="permission('BSetupNewPlant' ,1)" />Yes
-                            <input type="radio" name="10" value="No" checked  onClick="permission('BSetupNewPlant' ,0)"/>No
+                            <br><br>
+                            Setup New Plant :  <br>   <input type="radio" name="10" value="Yes" class="radio-inline" onClick="permission('BSetupNewPlant', 1)" />Yes
+                            <input type="radio" name="10" value="No" checked  onClick="permission('BSetupNewPlant', 0)"/>No
                             <input type="hidden" name="BSetupNewPlant" id="BSetupNewPlant" value="0">
                             <br>
-            Change current Plant :     <input type="radio" name="10" value="Yes" onClick="permission('BChangeCurrentPlant' ,1)" />Yes
-                            <input type="radio" name="10" value="No" checked  onClick="permission('BChangeCurrentPlant' ,0)"/>No
+                            Change current Plant :  <br>   <input type="radio" name="10" value="Yes" class="radio-inline" onClick="permission('BChangeCurrentPlant', 1)" />Yes
+                            <input type="radio" name="10" value="No" checked  onClick="permission('BChangeCurrentPlant', 0)"/>No
                             <input type="hidden" name="BChangeCurrentPlant" id="BChangeCurrentPlant" value="0">
-                            <br>
-            Plant Modify :     <input type="radio" name="11" value="Yes" onClick="permission('BPlantModify' ,1)" />Yes
-                            <input type="radio" name="11" value="No" checked  onClick="permission('BPlantModify' ,0)"/>No
+                            <br><br>
+                            Plant Modify :  <br>   <input type="radio" name="11" value="Yes" class="radio-inline" onClick="permission('BPlantModify', 1)" />Yes
+                            <input type="radio" name="11" value="No" checked  onClick="permission('BPlantModify', 0)"/>No
                             <input type="hidden" name="BPlantModify" id="BPlantModify" value="0">
-                            <br>
-            View Exception :     <input type="radio" name="12" value="Yes" onClick="permission('BViewException' ,1)" />Yes
-                            <input type="radio" name="12" value="No" checked  onClick="permission('BViewException' ,0)"/>No
+                            
+                            </div>
+                            <div class="col-xs-4 col-xs-offset8">
+                        View Exception :   <br>  <input type="radio" name="12" value="Yes" class="radio-inline" onClick="permission('BViewException', 1)" />Yes
+                            <input type="radio" name="12" value="No" checked  onClick="permission('BViewException', 0)"/>No
                             <input type="hidden" name="BViewException" id="BViewException" value="0">
-                            <br>
-            End Exception :     <input type="radio" name="13" value="Yes" onClick="permission('BEndException' ,1)" />Yes
-                            <input type="radio" name="13" value="No" checked  onClick="permission('BEndException' ,0)"/>No
+                            <br><br>
+                        
+                            End Exception :  <br>   <input type="radio" name="13" class="radio-inline" value="Yes" onClick="permission('BEndException', 1)" />Yes
+                            <input type="radio" name="13" value="No" checked  onClick="permission('BEndException', 0)"/>No
                             <input type="hidden" name="BEndException" id="BEndException" value="0">
-                            <br>
-            View Plant History :     <input type="radio" name="14" value="Yes" onClick="permission('BViewHistory' ,1)" />Yes
-                            <input type="radio" name="14" value="No" checked  onClick="permission('BViewHistory' ,0)"/>No
+                            <br><br>
+                            View Plant History :  <br>   <input type="radio" name="14" class="radio-inline" value="Yes" onClick="permission('BViewHistory', 1)" />Yes
+                            <input type="radio" name="14" value="No" checked  onClick="permission('BViewHistory', 0)"/>No
                             <input type="hidden" name="BViewHistory" id="BViewHistory" value="0">
-                            <br>
-            Node View :     <input type="radio" name="15" value="Yes" onClick="permission('BNodeView' ,1)" />Yes
-                            <input type="radio" name="15" value="No" checked  onClick="permission('BNodeView' ,0)"/>No
+                            <br><br>
+                            Node View :   <br>  <input type="radio" name="15" value="Yes" class="radio-inline" onClick="permission('BNodeView', 1)" />Yes
+                            <input type="radio" name="15" value="No" checked  onClick="permission('BNodeView', 0)"/>No
                             <input type="hidden" name="BNodeView" id="BNodeView" value="0">
-                            <br>
-            View DO :     <input type="radio" name="16" value="Yes" onClick="permission('BViewDo' ,1)" />Yes
-                            <input type="radio" name="16" value="No" checked  onClick="permission('BViewDo' ,0)"/>No
+                            <br><br>
+                            View DO :  <br>   <input type="radio" name="16" value="Yes" class="radio-inline" onClick="permission('BViewDo', 1)" />Yes
+                            <input type="radio" name="16" value="No" checked  onClick="permission('BViewDo', 0)"/>No
                             <input type="hidden" name="BViewDo" id="BViewDo" value="0">
-                            <br>
-            Logged In :     <input type="radio" name="17" value="Yes" onClick="permission('BLoggedIn' ,1)" />Yes
-                            <input type="radio" name="17" value="No" checked  onClick="permission('BLoggedIn' ,0)"/>No
-                            <input type="hidden" name="BLoggedIn" id="BLoggedIn" value="0">
-                            <br>
-            <input type="button" value="Add User" onClick = "useraction()" />
+                            <br><br>
+                            Logged In :   <br>  <input type="radio" name="17" value="Yes" class="radio-inline" onClick="permission('BLoggedIn', 1)" />Yes
+                            <input type="radio" name="17" value="No" checked  onClick="permission('BLoggedIn', 0)"/>No
+                        </div>
+                        <input type="hidden" name="BLoggedIn" id="BLoggedIn" value="0">
+                        <br><br>
+                        <input type="button" class="btn btn-success col-sm-12" value="Add User" onClick = "useraction()" />
+                    </div>
+            </form>
+        </div>
+        </div>
+                        
 
-       </form>
     </body>
-    
+
 </html>
