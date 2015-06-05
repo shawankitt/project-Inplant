@@ -35,10 +35,10 @@
                             <input type="password" class="form-control" name="password" /> <!-- members of same name must exist in corresponding action class so that their value is automatically set-->
                         </div>
 
-                            <input class="btn btn-success" type="submit" value="Login"/>
-                            <b>OR</b>
+                            <input class="btn btn-success col-sm-12" type="submit" value="Login"/>
+                            <b style="text-align:center">OR</b>
                             <!--<a href="jsp/insert/index.jsp" style="color:black">Or register Here</a>-->
-                            <input class="btn btn-success" type="button" value="Rgister Here" onclick="window.location='jsp/insert/index.jsp'"/>
+                            <input class="btn btn-success col-sm-12" type="button" value="Register Here" onclick="window.location='jsp/insert/index.jsp'"/>
                     </form>
                     <br>
                     <!--<a href="jsp/insert/index.jsp">Or register Here</a>-->
