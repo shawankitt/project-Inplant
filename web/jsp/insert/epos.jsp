@@ -19,53 +19,58 @@
         <script src="../../js/placeholder.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Epos</title>
-    <script>
-        var i;
-        function showtimestamp()
-        {
-            document.getElementById("time").style.display = "block";
-            document.getElementById("timestamp").style.display = "block";
-            document.getElementById("Bothway").value = "1";
-        }
-        function hidetimestamp()
-        {
-            document.getElementById("time").style.display = "none";
-            document.getElementById("timestamp").style.display = "none";
-            document.getElementById("Bothway").value = "0";
-        }
-        function eposaction(button)
-        {
-            var number = /^\d+$/;
-            var a = document.forms["epos"]["ITerminalId"].value;
-            if (!number.test(a))
+        <script>
+            var i;
+            function showtimestamp()
             {
-                alert("Terminal Id : Expected Integer");
-                return;
+                document.getElementById("time").style.display = "block";
+                document.getElementById("timestamp").style.display = "block";
+                document.getElementById("Bothway").value = "1";
             }
-            var b = document.forms["epos"]["IMachineId"].value;
-            if (!number.test(b))
+            function hidetimestamp()
             {
-                alert("Machine Id : Expected Integer");
-                return;
+                document.getElementById("time").style.display = "none";
+                document.getElementById("timestamp").style.display = "none";
+                document.getElementById("Bothway").value = "0";
             }
-            var c = document.forms["epos"]["IGateNo"].value;
-            if (!number.test(c))
+            function eposaction(button)
             {
-                alert("Gate No : Expected Integer");
-                return;
+                var number = /^\d+$/;
+                var a = document.forms["epos"]["ITerminalId"].value;
+                if (!number.test(a))
+                {
+                    alert("Terminal Id : Expected Integer");
+                    return;
+                }
+                var b = document.forms["epos"]["IMachineId"].value;
+                if (!number.test(b))
+                {
+                    alert("Machine Id : Expected Integer");
+                    return;
+                }
+                var c = document.forms["epos"]["IGateNo"].value;
+                if (!number.test(c))
+                {
+                    alert("Gate No : Expected Integer");
+                    return;
+                }
+                if (button.id === "add")
+                    document.epos.action = "insertepos";
+                else if (button.id === "next")
+                    document.epos.action = "inserteposnext";
+                document.epos.submit();
             }
-            if (button.id === "add")
-                document.epos.action = "insertepos";
-            else if (button.id === "next")
-                document.epos.action = "inserteposnext";
-            document.epos.submit();
-        }
-    </script>
-</head>
+            function skipepos()
+            {
+                document.epos.action = "skipepos";
+                document.epos.submit();
+            }
+        </script>
+    </head>
     <%
         ValueStack stack = ActionContext.getContext().getValueStack();
-        Map sesion = (Map)ActionContext.getContext().getSession();
-        hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
+        Map sesion = (Map) ActionContext.getContext().getSession();
+        hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers) sesion.get("user");
     %>
     <div class="container">
         <div class="row">
@@ -93,11 +98,14 @@
                         <input type="radio" class="radio" name="BBothways" value="bothway" onClick="showtimestamp()" />Bothway<br>
                         <input type="hidden" name="Bothway" id="Bothway" value="0">
                         <label id="timestamp" style="display:none;">Timestamp:</label>
-                        
+
                         <input type="text" class="form-control" id="time" name="ITimeInBetween" value="0" style="display:none;" />
-                        
-                        <input type="button" class="btn btn-info btn-lg col-sm-12" name="add" id="add" value="Add More Epos" onClick = "eposaction(this)" />
-                        <input type="button" class="btn btn-success btn-lg col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "eposaction(this)" />
+
+                        <input type="button" class="btn btn-info btn-success col-sm-12" name="add" id="add" value="Add More Epos" onClick = "eposaction(this)" />
+                        <div>&nbsp;</div>
+                        <input type="button" class="btn btn-success btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "eposaction(this)" />
+                        <div>&nbsp;</div>
+                        <input type="button" value="Skip" class="btn btn-info col-sm-12" onClick = "skipepos()" />
                     </div>
                 </form>
             </div>

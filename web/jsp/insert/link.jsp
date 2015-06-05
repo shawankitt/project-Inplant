@@ -21,6 +21,11 @@
         <script src="../../js/placeholder.js" type="text/javascript"></script>
         <title>Link</title>
         <script>
+            function skiplink()
+            {
+                document.link.action = "skiplink";
+                document.link.submit();
+            }
             function linkaction(button)
             {
                 var number = /^\d+$/;
@@ -91,7 +96,8 @@
                             <label>Expected Time Between Them</label>
                             <input class="form-control" type="text" name="timeinbetween" placeholder="Enter Time in Minutes" onfocus="hide(this)" onblur="show(this, 'Enter Time in MInutes')"/><br>
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Links" onClick = "linkaction(this)" /><br><br>
-                            <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "linkaction(this)" />
+                            <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "linkaction(this)" /><br><br>
+                            <input type="button" class="btn btn-info col-sm-12" name="skip" id="skip" value="Skip" onClick = "skiplink()" />
                         </div>
                     </form>
                 </div>

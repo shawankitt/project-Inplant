@@ -20,7 +20,6 @@
     </head>
     <body>
 
-        <!--<div id="top"><jsp:include page="Menu.jsp"/></div>-->
         <%
             Map sesion = (Map) ActionContext.getContext().getSession();
             hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers) sesion.get("user");
@@ -31,6 +30,12 @@
                 document.getElementById(name).value = bool;
                 document.getElementById(name).value = bool;
             }
+            function home()
+            {
+                
+                document.user.action="Home";
+                document.user.submit();
+            }
             function useraction()
             {
                 var pwd = document.getElementById("pwd").value;
@@ -40,31 +45,33 @@
                     alert("passwaords dont match");
                     return;
                 }
+                document.user.action="insertuser";
                 document.user.submit();
             }
+            
         </script>
         <div class="container">
             <div class="col-md-6 col-md-offset-3 jumbotron">
-
-            <form name="user" action="insertuser">
+                <h2 style="text-align: center">Add User</h2>
+            <form name="user" action="">
                 <div class="form-group">
                     <div class="row">
                         <input type="hidden" name="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString());%>">
                         <label>Username  :</label>
-                        <input type="text" name="SUsername" class="form-control" value=""/><br>
+                        <input type="text" name="SUsername" class="form-control" value="" placeholder="Enter Username" onfocus="hide(this)" onblur="show(this,'Enter Username')"/><br>
                         <label>Password  :</label>
-                        <input type="password" id="pwd" class="form-control" name="SPassword" value="" /> <br>
+                        <input type="password" id="pwd" class="form-control" name="SPassword" value="" placeholder="Enter Password" onfocus="hide(this)" onblur="show(this,'Enter Password')"/> <br>
                         <label>Confirm Password  : </label>
-                        <input type="password" id="pwd2" class="form-control" name="cSPassword" value="" /> <br>
-                        <label ><h4 style="text-align: center">Permissions : </h4></label>
+                        <input type="password" id="pwd2" class="form-control" name="cSPassword" value="" placeholder="Confirm Password" onfocus="hide(this)" onblur="show(this,'Confirm Password')"/> <br>
+                        <label style="text-align: center">Permissions : </label>
                         <br><br>
                     </div>
                         
                     <div class="row">
                         <div class="col-xs-4">
-                            Remove Trip : <br>
+                            <b>Remove Trip</b> : <br>
                             <input type="radio" class="radio-inline" name="1" value="Yes" onClick="permission('BRemoveTrip', 1)" />Yes
-                            <input type="radio"class="radio-inline" name="1" value="No" checked  onClick="permission('BRemoveTrip', 0)"/>No
+                            <input type="radio" class="radio-inline" name="1" value="No" checked  onClick="permission('BRemoveTrip', 0)"/>No
                             <input type="hidden" name="BRemoveTrip" id="BRemoveTrip" value="0">
                             <br><br>
                             View Trip :  <br>   
@@ -106,8 +113,8 @@
                             Setup New Plant :  <br>   <input type="radio" name="10" value="Yes" class="radio-inline" onClick="permission('BSetupNewPlant', 1)" />Yes
                             <input type="radio" name="10" value="No" checked  onClick="permission('BSetupNewPlant', 0)"/>No
                             <input type="hidden" name="BSetupNewPlant" id="BSetupNewPlant" value="0">
-                            <br>
-                            Change current Plant :  <br>   <input type="radio" name="10" value="Yes" class="radio-inline" onClick="permission('BChangeCurrentPlant', 1)" />Yes
+                            <br><br>
+                            Change Plant :  <br>   <input type="radio" name="10" value="Yes" class="radio-inline" onClick="permission('BChangeCurrentPlant', 1)" />Yes
                             <input type="radio" name="10" value="No" checked  onClick="permission('BChangeCurrentPlant', 0)"/>No
                             <input type="hidden" name="BChangeCurrentPlant" id="BChangeCurrentPlant" value="0">
                             <br><br>
@@ -117,7 +124,7 @@
                             
                             </div>
                             <div class="col-xs-4 col-xs-offset8">
-                        View Exception :   <br>  <input type="radio" name="12" value="Yes" class="radio-inline" onClick="permission('BViewException', 1)" />Yes
+                            View Exception :   <br>  <input type="radio" name="12" value="Yes" class="radio-inline" onClick="permission('BViewException', 1)" />Yes
                             <input type="radio" name="12" value="No" checked  onClick="permission('BViewException', 0)"/>No
                             <input type="hidden" name="BViewException" id="BViewException" value="0">
                             <br><br>
@@ -141,9 +148,11 @@
                             Logged In :   <br>  <input type="radio" name="17" value="Yes" class="radio-inline" onClick="permission('BLoggedIn', 1)" />Yes
                             <input type="radio" name="17" value="No" checked  onClick="permission('BLoggedIn', 0)"/>No
                         </div>
+                        <div> &nbsp;</div>
                         <input type="hidden" name="BLoggedIn" id="BLoggedIn" value="0">
-                        <br><br>
                         <input type="button" class="btn btn-success col-sm-12" value="Add User" onClick = "useraction()" />
+                        <div>&nbsp;</div>
+                        <input type="button" class="btn btn-info col-sm-12" value="Home" onClick = "home()" />
                     </div>
             </form>
         </div>

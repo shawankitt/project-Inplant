@@ -106,5 +106,29 @@
         <action name="Home">
             <result>/jsp/ViewTrips.jsp</result>
         </action>
+        <action name="skipepos">
+            <result>/jsp/insert/link.jsp</result>
+        </action>
+        <action name="skiplink">
+            <result>/jsp/insert/transporter.jsp</result>
+        </action>
+        <action name="skiptransporter">
+            <result>/jsp/insert/vehicle.jsp</result>
+        </action>
+        <action name="skipvehicle">
+            <result>/jsp/insert/driver.jsp</result>
+        </action>
+        <action name="skipdriver">
+            <result>/jsp/insert/card.jsp</result>
+        </action>
+        <action name="skipcard">
+            <result>/jsp/insert/process.jsp</result>
+        </action>
+        <action name="skipprocess">
+            <result>/jsp/insert/path.jsp</result>
+        </action>
+        <action name="skip">
+            <result>/jsp/insert/vehicle.jsp</result>
+        </action>
     </package>
 </struts>

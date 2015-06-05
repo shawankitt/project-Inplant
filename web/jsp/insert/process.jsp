@@ -30,6 +30,11 @@
                 </div>
             </div>
             <script>
+                function skipprocess()
+                {
+                    document.Process.action = "skipprocess";
+                    document.Process.submit();
+                }
                 function processaction(button)
                 {
                     var a = document.forms["Process"]["processname"].value;
@@ -60,7 +65,8 @@
                             <label>Process Name : </label>
                             <input class="form-control" type="text" name="processname"  placeholder="Enter Process Name" onfocus="hide(this)" onblur="show(this, 'Enter Process Name')"/><br>
                             <input type="button" class="btn btn-info col-sm-12"  name="add" id="add" value="Add More Process" onClick = "processaction(this)" /><br><br>
-                            <input type="button" name="next" id="next" class="btn btn-success col-sm-12"  value="Submit And Next Page" onClick = "processaction(this)" />
+                            <input type="button" name="next" id="next" class="btn btn-success col-sm-12"  value="Submit And Next Page" onClick = "processaction(this)" /><br><br>
+                            <input type="button" name="skip" id="skip" class="btn btn-info col-sm-12"  value="Skip" onClick = "skipprocess(this)" />
                         </div>
                     </form>
 

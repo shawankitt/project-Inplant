@@ -31,6 +31,11 @@
             </div>
 
             <script>
+                function skipvehicle()
+                {
+                    document.vehicle.action="skipvehicle";
+                    document.vehicle.submit();
+                }
                 function vehicleaction(button)
                 {
                     var number = /^\d+$/;
@@ -96,7 +101,8 @@
                     <form>
                         <div class="form-group">
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Vehicle" onClick = "vehicleaction(this)" /><br><br>
-                            <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "vehicleaction(this)" />
+                            <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "vehicleaction(this)" /><br><br>
+                            <input type="button" class="btn btn-info col-sm-12" name="skip" id="skip" value="Skip" onClick = "skipvehicle()" />
                         </div>
                     </form>
                 </div>

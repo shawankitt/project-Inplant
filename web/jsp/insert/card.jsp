@@ -25,6 +25,11 @@
     </head>
     <body>
         <script>
+            function skipcard()
+            {
+                document.card.action = "skipcard";
+                document.card.submit();
+            }
             function cardaction(button)
             {
                 var a = document.forms["card"]["cardid"].value;
@@ -63,7 +68,8 @@
                         </div>
                         
                         <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Card" onClick = "cardaction(this)" /><br><br>
-                        <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "cardaction(this)" />
+                        <input type="button" class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "cardaction(this)" /><br><br>
+                        <input type="button" class="btn btn-info col-sm-12" name="skip" id="skip" value="Skip" onClick = "skipcard()" />
                     </form>
                 </div>
             </div>

@@ -31,6 +31,11 @@
                 </div>
             </div>
             <script>
+                function skipdriver()
+                {
+                    document.vehicle.action="skipdriver";
+                    document.vehicle.submit();
+                }
                 function driveraction(button)
                 {
                     if (button.id === "add")
@@ -91,11 +96,12 @@
                             }
                         %>
                     </select>
-
+                    <br>
                     <form role="form">
                         <div class="form-group">
-                        <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Driver" onClick = "driveraction(this)" />
-                        <input type="button"  class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "driveraction(this)" />
+                            <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Driver" onClick = "driveraction(this)" /><br><br>
+                        <input type="button"  class="btn btn-success col-sm-12" name="next" id="next" value="Submit And Next Page" onClick = "driveraction(this)" /><br><br>
+                        <input type="button"  class="btn btn-info col-sm-12" name="skip" id="skip" value="Skip" onClick = "skipdriver()" />
                         </div>
                     </form>
                 </div>
