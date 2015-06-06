@@ -4,6 +4,10 @@
     Author     : Raj-HP
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="hibernate.helper.MappingList"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.opensymphony.xwork2.ActionContext"%>
@@ -120,11 +124,26 @@
                                 ValueStack stack = ActionContext.getContext().getValueStack();
                                 Map sesion = (Map)ActionContext.getContext().getSession();
                                 hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
+                            %>
+                            <%
                                 out.println("<option>Choose Card No. </option>");
                                 CardList c=new CardList();
                                 List<hibernate.pojo.TblCard> CardList=c.getCardList(user.getTblPlant().getIPlantId().toString());
+                                MappingList m=new MappingList();
+                                List<hibernate.pojo.TblMapping> MappingList=m.getMappingList(user.getTblPlant().getIPlantId().toString());
+                                
+                                HashMap hm = new HashMap();
+                                for(int i=0;i<MappingList.size();i++)
+                                    hm.put(MappingList.get(i).getICardId().toString(),"true");
+                                /*for(int i = 0; i < MappingList.size(); i++)
+                                {
+                                    out.println("<option value=\""+ MappingList.get(i).getICardId()+"\">"+ MappingList.get(i).getICardId() +"</option>");
+                                }*/
                                 for(int i = 0; i < CardList.size(); i++)
+                                {
+                                    if( hm.get(CardList.get(i).getCCardId().toString()) != "true")
                                     out.println("<option value=\""+ CardList.get(i).getCCardId()+"\">"+ CardList.get(i).getCCardId() +"</option>");
+                                }
                             %>
                             </select>
                         </div>

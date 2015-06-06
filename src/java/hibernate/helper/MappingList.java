@@ -4,32 +4,30 @@
  * and open the template in the editor.
  */
 package hibernate.helper;
-
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 /**
  *
  * @author Raj-HP
  */
-public class CardList {
+public class MappingList {
     Session session = null;
 
-    public CardList() {
+    public MappingList() {
     }
     
-    private List<hibernate.pojo.TblCard> cardList = null;
+    private List<hibernate.pojo.TblMapping> mappingList = null;
     
-    public List<hibernate.pojo.TblCard> getCardList(String Id){
+    public List<hibernate.pojo.TblMapping> getMappingList(String Id){
         this.session = hibernate.folder.HibernateUtil.getSessionFactory().openSession();
         try 
         {
             /*Query q = session.createQuery ("FROM hibernate.pojo.TblCard where i_plant_id=" + Id +
                                         "and c_card_id not in" + 
                                         "(FROM hibernate.pojo.TblMapping where i_plant_id=" + Id + "and b_is_active='true')");*/
-            Query q = session.createQuery ("FROM hibernate.pojo.TblCard where i_plant_id=" + Id);
-            cardList = (List<hibernate.pojo.TblCard>) q.list();
+            Query q = session.createQuery ("FROM hibernate.pojo.TblMapping where i_plant_id=" + Id + "and b_is_active='true'" );
+            mappingList = (List<hibernate.pojo.TblMapping>) q.list();
             
         }
         catch (Exception e) 
@@ -40,10 +38,6 @@ public class CardList {
         {
             this.session.close();
         }
-       return cardList;
-    }
-    public static void main(String args[])
-    {
-        
+       return mappingList;
     }
 }
