@@ -32,6 +32,11 @@ public class PermissionHandler {
      private Boolean BAddDriver;
      private Boolean BViewDo;
      private Boolean BLoggedIn;
+     private Boolean BAddTransporter;
+     private Boolean BAddCard;
+     private Boolean BAddPath;
+     private Boolean BAddEpos;
+     private Boolean BAddProcess;
 
     public PermissionHandler() {
     }
@@ -56,6 +61,11 @@ public class PermissionHandler {
             this.BAddDriver = true;
             this.BViewDo = true;
             this.BLoggedIn = true;
+            this.BAddCard = true;
+            this.BAddEpos = true;
+            this.BAddPath = true;
+            this.BAddProcess = true;
+            this.BAddTransporter = true;
         }
         if(s.equals("transporter")){
             this.BRemoveTrip = false;
@@ -76,7 +86,52 @@ public class PermissionHandler {
             this.BAddDriver = true;
             this.BViewDo = true;
             this.BLoggedIn = true;
+            this.BAddCard = false;
+            this.BAddEpos = false;
+            this.BAddPath = false;
+            this.BAddProcess = false;
+            this.BAddTransporter = false;
         }
+    }
+
+    public Boolean getBAddTransporter() {
+        return BAddTransporter;
+    }
+
+    public void setBAddTransporter(Boolean BAddTransporter) {
+        this.BAddTransporter = BAddTransporter;
+    }
+
+    public Boolean getBAddCard() {
+        return BAddCard;
+    }
+
+    public void setBAddCard(Boolean BAddCard) {
+        this.BAddCard = BAddCard;
+    }
+
+    public Boolean getBAddPath() {
+        return BAddPath;
+    }
+
+    public void setBAddPath(Boolean BAddPath) {
+        this.BAddPath = BAddPath;
+    }
+
+    public Boolean getBAddEpos() {
+        return BAddEpos;
+    }
+
+    public void setBAddEpos(Boolean BAddEpos) {
+        this.BAddEpos = BAddEpos;
+    }
+
+    public Boolean getBAddProcess() {
+        return BAddProcess;
+    }
+
+    public void setBAddProcess(Boolean BAddProcess) {
+        this.BAddProcess = BAddProcess;
     }
      
     

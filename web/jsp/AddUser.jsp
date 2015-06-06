@@ -92,6 +92,14 @@
                             <input type="radio" name="5" value="No" checked  onClick="permission('BModifyUser', 0)"/>No
                             <input type="hidden" name="BModifyUser" id="BModifyUser" value="0">
                             <br><br>
+                            Add Card :   <br>  <input type="radio" name="5" class="radio-inline" value="Yes" onClick="permission('BAddCard', 1)" />Yes
+                            <input type="radio" name="5" value="No" checked  onClick="permission('BAddCard', 0)"/>No
+                            <input type="hidden" name="BAddCard" id="BAddCard" value="0">
+                            <br><br>
+                            Add Process :   <br>  <input type="radio" name="5" class="radio-inline" value="Yes" onClick="permission('BAddProcess', 1)" />Yes
+                            <input type="radio" name="5" value="No" checked  onClick="permission('BAddProcess', 0)"/>No
+                            <input type="hidden" name="BAddProcess" id="BAddProcess" value="0">
+                            <br><br>
                             Add Vehicle :  <br>   <input type="radio" name="6" class="radio-inline" value="Yes" onClick="permission('BAddVehicle', 1)" />Yes
                             <input type="radio" name="6" value="No" checked  onClick="permission('BAddVehicle', 0)"/>No
                             <input type="hidden" name="BAddVehicle" id="BAddVehicle" value="0">
@@ -121,7 +129,14 @@
                             Plant Modify :  <br>   <input type="radio" name="11" value="Yes" class="radio-inline" onClick="permission('BPlantModify', 1)" />Yes
                             <input type="radio" name="11" value="No" checked  onClick="permission('BPlantModify', 0)"/>No
                             <input type="hidden" name="BPlantModify" id="BPlantModify" value="0">
-                            
+                            <br><br>
+                            Add transporter :  <br>   <input type="radio" name="11" value="Yes" class="radio-inline" onClick="permission('BAddTransporter', 1)" />Yes
+                            <input type="radio" name="11" value="No" checked  onClick="permission('BAddTransporter', 0)"/>No
+                            <input type="hidden" name="BAddTransporter" id="BAddTransporter" value="0">
+                            <br><br>
+                            Add Path :  <br>   <input type="radio" name="11" value="Yes" class="radio-inline" onClick="permission('BAddPath', 1)" />Yes
+                            <input type="radio" name="11" value="No" checked  onClick="permission('BAddPath', 0)"/>No
+                            <input type="hidden" name="BAddPath" id="BAddPath" value="0">
                             </div>
                             <div class="col-xs-4 col-xs-offset8">
                             View Exception :   <br>  <input type="radio" name="12" value="Yes" class="radio-inline" onClick="permission('BViewException', 1)" />Yes
@@ -144,6 +159,10 @@
                             View DO :  <br>   <input type="radio" name="16" value="Yes" class="radio-inline" onClick="permission('BViewDo', 1)" />Yes
                             <input type="radio" name="16" value="No" checked  onClick="permission('BViewDo', 0)"/>No
                             <input type="hidden" name="BViewDo" id="BViewDo" value="0">
+                            <br><br>
+                            Add Epos :  <br>   <input type="radio" name="16" value="Yes" class="radio-inline" onClick="permission('BAddEpos', 1)" />Yes
+                            <input type="radio" name="16" value="No" checked  onClick="permission('BAddEpos', 0)"/>No
+                            <input type="hidden" name="BAddEpos" id="BAddEpos" value="0">
                             <br><br>
                             Logged In :   <br>  <input type="radio" name="17" value="Yes" class="radio-inline" onClick="permission('BLoggedIn', 1)" />Yes
                             <input type="radio" name="17" value="No" checked  onClick="permission('BLoggedIn', 0)"/>No
