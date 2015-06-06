@@ -45,6 +45,7 @@
                 temp = temp + "#";
                 document.getElementById("addepos").value = temp;
                 alert(temp);
+                dropdown.options[dropdown.selectedIndex]=null;
             }
         </script>
         <%
