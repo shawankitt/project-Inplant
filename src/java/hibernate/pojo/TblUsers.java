@@ -1,5 +1,5 @@
 package hibernate.pojo;
-// Generated 3 Jun, 2015 5:12:49 PM by Hibernate Tools 4.3.1
+// Generated Jun 6, 2015 4:01:08 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -34,6 +34,11 @@ public class TblUsers  implements java.io.Serializable {
      private Boolean BLoggedIn;
      private BigDecimal ITransporterId;
      private BigDecimal IDriverId;
+     private Boolean BAddTransporter;
+     private Boolean BAddCard;
+     private Boolean BAddPath;
+     private Boolean BAddEpos;
+     private Boolean BAddProcess;
 
     public TblUsers() {
     }
@@ -44,7 +49,7 @@ public class TblUsers  implements java.io.Serializable {
         this.tblPlant = tblPlant;
         this.SPasswordMd5 = SPasswordMd5;
     }
-    public TblUsers(String SUsername, TblPlant tblPlant, String SPassword, String SPasswordMd5, Boolean BRemoveTrip, Boolean BViewTrip, Boolean BNodeView, Boolean BAddTrip, Boolean BViewException, Boolean BEndException, Boolean BViewHistory, Boolean BSetupNewPlant, Boolean BPlantModify, Boolean BAddUser, Boolean BModifyUser, Boolean BChangeCurrentPlant, Boolean BAddVehicle, Boolean BModifyVehicle, Boolean BModifyDriver, Boolean BAddDriver, Boolean BViewDo, Boolean BLoggedIn, BigDecimal ITransporterId, BigDecimal IDriverId) {
+    public TblUsers(String SUsername, TblPlant tblPlant, String SPassword, String SPasswordMd5, Boolean BRemoveTrip, Boolean BViewTrip, Boolean BNodeView, Boolean BAddTrip, Boolean BViewException, Boolean BEndException, Boolean BViewHistory, Boolean BSetupNewPlant, Boolean BPlantModify, Boolean BAddUser, Boolean BModifyUser, Boolean BChangeCurrentPlant, Boolean BAddVehicle, Boolean BModifyVehicle, Boolean BModifyDriver, Boolean BAddDriver, Boolean BViewDo, Boolean BLoggedIn, BigDecimal ITransporterId, BigDecimal IDriverId, Boolean BAddTransporter, Boolean BAddCard, Boolean BAddPath, Boolean BAddEpos, Boolean BAddProcess) {
        this.SUsername = SUsername;
        this.tblPlant = tblPlant;
        this.SPassword = SPassword;
@@ -69,8 +74,14 @@ public class TblUsers  implements java.io.Serializable {
        this.BLoggedIn = BLoggedIn;
        this.ITransporterId = ITransporterId;
        this.IDriverId = IDriverId;
+       this.BAddTransporter = BAddTransporter;
+       this.BAddCard = BAddCard;
+       this.BAddPath = BAddPath;
+       this.BAddEpos = BAddEpos;
+       this.BAddProcess = BAddProcess;
     }
-   
+
+    
     public String getSUsername() {
         return this.SUsername;
     }
@@ -238,6 +249,41 @@ public class TblUsers  implements java.io.Serializable {
     
     public void setIDriverId(BigDecimal IDriverId) {
         this.IDriverId = IDriverId;
+    }
+    public Boolean getBAddTransporter() {
+        return this.BAddTransporter;
+    }
+    
+    public void setBAddTransporter(Boolean BAddTransporter) {
+        this.BAddTransporter = BAddTransporter;
+    }
+    public Boolean getBAddCard() {
+        return this.BAddCard;
+    }
+    
+    public void setBAddCard(Boolean BAddCard) {
+        this.BAddCard = BAddCard;
+    }
+    public Boolean getBAddPath() {
+        return this.BAddPath;
+    }
+    
+    public void setBAddPath(Boolean BAddPath) {
+        this.BAddPath = BAddPath;
+    }
+    public Boolean getBAddEpos() {
+        return this.BAddEpos;
+    }
+    
+    public void setBAddEpos(Boolean BAddEpos) {
+        this.BAddEpos = BAddEpos;
+    }
+    public Boolean getBAddProcess() {
+        return this.BAddProcess;
+    }
+    
+    public void setBAddProcess(Boolean BAddProcess) {
+        this.BAddProcess = BAddProcess;
     }
 
 
