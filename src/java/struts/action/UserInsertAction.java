@@ -34,6 +34,11 @@ public class UserInsertAction {
      private String BAddDriver;
      private String BViewDo;
      private String BLoggedIn;
+     private String BAddTransporter;
+     private String BAddCard;
+     private String BAddPath;
+     private String BAddEpos;
+     private String BAddProcess;
      private permission.PermissionHandler p;
      
      
@@ -58,12 +63,58 @@ public class UserInsertAction {
          p.setBViewException(Integer.parseInt(BViewException) == 1);
          p.setBViewHistory(Integer.parseInt(BViewHistory) == 1);
          p.setBViewTrip(Integer.parseInt(BViewTrip) == 1);
+         p.setBAddCard(Integer.parseInt(BAddCard) == 1);
+         p.setBAddEpos(Integer.parseInt(BAddEpos) == 1);
+         p.setBAddPath(Integer.parseInt(BAddPath) == 1);
+         p.setBAddProcess(Integer.parseInt(BAddProcess) == 1);
+         p.setBAddTransporter(Integer.parseInt(BAddTransporter) == 1);
          
          Users_handler u = new Users_handler();
          String result =u.insert_into_table(SUsername, Integer.parseInt(Id), SPassword, security.MD5.crypt(SPassword), p);
          return result;
      }
 
+    public String getBAddTransporter() {
+        return BAddTransporter;
+    }
+
+    public void setBAddTransporter(String BAddTransporter) {
+        this.BAddTransporter = BAddTransporter;
+    }
+
+    public String getBAddCard() {
+        return BAddCard;
+    }
+
+    public void setBAddCard(String BAddCard) {
+        this.BAddCard = BAddCard;
+    }
+
+    public String getBAddPath() {
+        return BAddPath;
+    }
+
+    public void setBAddPath(String BAddPath) {
+        this.BAddPath = BAddPath;
+    }
+
+    public String getBAddEpos() {
+        return BAddEpos;
+    }
+
+    public void setBAddEpos(String BAddEpos) {
+        this.BAddEpos = BAddEpos;
+    }
+
+    public String getBAddProcess() {
+        return BAddProcess;
+    }
+
+    public void setBAddProcess(String BAddProcess) {
+        this.BAddProcess = BAddProcess;
+    }
+     
+     
     public String getSUsername() {
         return SUsername;
     }

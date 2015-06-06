@@ -71,6 +71,21 @@
         <property name="BLoggedIn" type="java.lang.Boolean">
             <column name="b_logged_in" />
         </property>
+        <property name="BAddTransporter" type="java.lang.Boolean">
+            <column name="b_add_transporter" />
+        </property>
+        <property name="BAddCard" type="java.lang.Boolean">
+            <column name="b_add_card" />
+        </property>
+        <property name="BAddPath" type="java.lang.Boolean">
+            <column name="b_add_path" />
+        </property>
+        <property name="BAddEpos" type="java.lang.Boolean">
+            <column name="b_add_epos" />
+        </property>
+        <property name="BAddProcess" type="java.lang.Boolean">
+            <column name="b_add_process" />
+        </property>
         <property name="ITransporterId" type="big_decimal">
             <column name="i_transporter_id" precision="30" scale="0" />
         </property>

@@ -122,6 +122,11 @@ import permission.PermissionHandler;
             u.setBViewException(p.getBViewException());
             u.setBViewHistory(p.getBViewHistory());
             u.setBViewTrip(p.getBViewTrip());
+            u.setBAddCard(p.getBAddCard());
+            u.setBAddEpos(p.getBAddEpos());
+            u.setBAddPath(p.getBAddEpos());
+            u.setBAddProcess(p.getBAddProcess());
+            u.setBAddTransporter(p.getBAddTransporter());
             
             session.save(u);
             
