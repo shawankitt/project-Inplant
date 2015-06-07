@@ -27,6 +27,26 @@
             <result>/jsp/AddTransporter.jsp</result>
         </action>
         
+        <action name="loggedIn-AddEpos" >
+            <result>/jsp/AddEpos.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddCard" >
+            <result>/jsp/AddCard.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddLink" >
+            <result>/jsp/AddLink.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddPath" >
+            <result>/jsp/AddPath.jsp</result>
+        </action>
+        
+        <action name="loggedIn-AddProcess" >
+            <result>/jsp/AddProcess.jsp</result>
+        </action>
+        
         <action name="loggedIn-*" >
             <result name="success">/jsp/{1}.jsp</result>
         </action>
@@ -102,6 +122,24 @@
         </action>
         <action name="AddVehicle" class="struts.action.VehicleInsertAction" method="execute">
             <result name="Success">/jsp/AddVehicle.jsp</result>
+        </action>
+        <action name="AddTransporter" class="struts.action.TransporterInsertAction" method="execute">
+            <result name="Success">/jsp/AddTransporter.jsp</result>
+        </action>
+        <action name="AddEpos" class="struts.action.EposInsertAction" method="execute">
+            <result name="Success">/jsp/AddEpos.jsp</result>
+        </action>
+        <action name="AddCard" class="struts.action.CardInsertAction" method="execute">
+            <result name="Success">/jsp/AddCard.jsp</result>
+        </action>
+        <action name="AddLink" class="struts.action.LinkInsertAction" method="execute">
+            <result name="Success">/jsp/AddLink.jsp</result>
+        </action>
+        <action name="AddPath" class="struts.action.PathInsertAction" method="execute">
+            <result name="Success">/jsp/AddPath.jsp</result>
+        </action>
+        <action name="AddProcess" class="struts.action.ProcessInsertAction" method="execute">
+            <result name="Success">/jsp/AddProcess.jsp</result>
         </action>
         <action name="Home">
             <result>/jsp/ViewTrips.jsp</result>

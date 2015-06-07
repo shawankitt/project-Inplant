@@ -108,6 +108,78 @@ public class Generate
         Permissions modifyDriver=new Permissions(temporary_canView, "Modify Driver", "loggedIn-ModfiyDriver");
         driverManagement.insertChild(modifyDriver);
         
+        //Transporter Management
+        Permissions transporterManagement=new Permissions(false, "Transporter Management", "#");
+        settings.insertChild(transporterManagement);
+        
+        temporary_canView=user.getBAddTransporter();
+        Permissions addTransporter=new Permissions(temporary_canView, "Add Transporter", "loggedIn-AddTransporter");
+        transporterManagement.insertChild(addTransporter);
+        
+        temporary_canView=user.getBModifyTransporter();
+        Permissions modifyTransporter=new Permissions(temporary_canView, "Modify Transporter", "loggedIn-ModifyTransporter");
+        transporterManagement.insertChild(modifyTransporter);
+        
+        //Epos Management
+        Permissions eposManagement=new Permissions(false, "Epos Management", "#");
+        settings.insertChild(eposManagement);
+        
+        temporary_canView=user.getBAddEpos();
+        Permissions addEpos=new Permissions(temporary_canView, "Add Epos", "loggedIn-AddEpos");
+        eposManagement.insertChild(addEpos);
+        
+        temporary_canView=user.getBModifyEpos();
+        Permissions modifyEpos=new Permissions(temporary_canView, "Modify Epos", "loggedIn-ModifyEpos");
+        eposManagement.insertChild(modifyEpos);
+        
+        //Link Management
+        Permissions linkManagement=new Permissions(false, "Link Management", "#");
+        settings.insertChild(linkManagement);
+        
+        temporary_canView=user.getBAddEpos();
+        Permissions addLink=new Permissions(temporary_canView, "Add Link", "loggedIn-AddLink");
+        linkManagement.insertChild(addLink);
+        
+        temporary_canView=user.getBModifyEpos();
+        Permissions modifyLink=new Permissions(temporary_canView, "Modify Link", "loggedIn-ModifyLink");
+        linkManagement.insertChild(modifyLink);
+        
+        //Path Management
+        Permissions pathManagement=new Permissions(false, "Path Management", "#");
+        settings.insertChild(pathManagement);
+        
+        temporary_canView=user.getBAddPath();
+        Permissions addPath=new Permissions(temporary_canView, "Add Path", "loggedIn-AddPath");
+        pathManagement.insertChild(addPath);
+        
+        temporary_canView=user.getBModifyPath();
+        Permissions modifyPath=new Permissions(temporary_canView, "Modify Path", "loggedIn-ModifyPath");
+        pathManagement.insertChild(modifyPath);
+        
+        //Process Management
+        Permissions processManagement=new Permissions(false, "Process Management", "#");
+        settings.insertChild(processManagement);
+        
+        temporary_canView=user.getBAddProcess();
+        Permissions addProcess=new Permissions(temporary_canView, "Add Process", "loggedIn-AddProcess");
+        processManagement.insertChild(addProcess);
+        
+        temporary_canView=user.getBModifyProcess();
+        Permissions modifyProcess=new Permissions(temporary_canView, "Modify Process", "loggedIn-ModifyProcess");
+        processManagement.insertChild(modifyProcess);
+        
+        //Card Management
+        Permissions cardManagement=new Permissions(false, "Card Management", "#");
+        settings.insertChild(cardManagement);
+        
+        temporary_canView=user.getBAddProcess();
+        Permissions addCard=new Permissions(temporary_canView, "Add Card", "loggedIn-AddCard");
+        cardManagement.insertChild(addCard);
+        
+        temporary_canView=user.getBModifyProcess();
+        Permissions modifyCard=new Permissions(temporary_canView, "Modify Card", "loggedIn-ModifyCard");
+        cardManagement.insertChild(modifyCard);
+        
         //Change Plant
         temporary_canView=user.getBChangeCurrentPlant();
         Permissions changePlant=new Permissions(temporary_canView, "Change Current Plant", "loggedIn-ChangePlant");
