@@ -48,7 +48,8 @@
                     }
                 };
                 var a = document.getElementById("Transporter").value;
-                xmlhttp.open("GET", "jsp/getDriver.jsp?transporterId=" + a, true);
+                var b = document.getElementById("Id").value;
+                xmlhttp.open("GET", "jsp/getDriver.jsp?transporterId=" + a + "&plantId=" + b, true);
                 xmlhttp.send();
                 
                 abc();
@@ -75,7 +76,8 @@
                     }
                 };
                 var a = document.getElementById("Transporter").value;
-                xmlhttp.open("GET", "jsp/getVehicle.jsp?transporterId=" + a, true);
+                var b = document.getElementById("Id").value;
+                xmlhttp.open("GET", "jsp/getVehicle.jsp?transporterId=" + a + "&plantId=" + b, true);
                 xmlhttp.send();
             }
             function trip()
@@ -191,7 +193,7 @@
                                 <input type="text" class="form-control" id="drivername" name="drivername" value="" style="display:none;" />
                             </div>
                             <input type="hidden" id="bname" name="bname" value="0">
-                            <input type="hidden" name="Id" value="<%out.print(user.getTblPlant().getIPlantId().toString());%>"/>           
+                            <input type="hidden" id="Id" name="Id" value="<%out.print(user.getTblPlant().getIPlantId().toString());%>"/>           
                             <input type="hidden" name="cardid" id="cardid" value=""/>
                             <input type="hidden" name="transporterid" id="transporterid" value=""/>
                             <input type="hidden" name="vehicleid" id="vehicleid" value=""/>
