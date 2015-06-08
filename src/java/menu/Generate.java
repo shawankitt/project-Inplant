@@ -205,6 +205,10 @@ public class Generate
         Permissions changePassword=new Permissions(true, "Change Password", "loggedIn-ChangePassword");
         root.insertChild(changePassword);
         
+        //Home
+        Permissions home=new Permissions(true, "Home", "Home");
+        root.insertChild(home);
+        
         //Logout
         Permissions logOut=new Permissions(true, "Logout", "Logout");
         root.insertChild(logOut);

@@ -49,6 +49,13 @@
                 };
                 var a = document.getElementById("Transporter").value;
                 var b = document.getElementById("Id").value;
+                /*var url = "jsp/getDriver.jsp";
+                var par = "transporterId=" + a + "&plantId=" + b;
+                xmlhttp.open("POST", url, true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.setRequestHeader("Content-length", par.length);
+                xmlhttp.setRequestHeader("Connection", "close");
+                xmlhttp.send(par);*/
                 xmlhttp.open("GET", "jsp/getDriver.jsp?transporterId=" + a + "&plantId=" + b, true);
                 xmlhttp.send();
                 
@@ -77,6 +84,13 @@
                 };
                 var a = document.getElementById("Transporter").value;
                 var b = document.getElementById("Id").value;
+                /*var url = "jsp/getVehicle.jsp";
+                var par = "transporterId=" + a + "&plantId=" + b;
+                xmlhttp.open("POST", url, true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.setRequestHeader("Content-length", par.length);
+                xmlhttp.setRequestHeader("Connection", "close");
+                xmlhttp.send(par);*/
                 xmlhttp.open("GET", "jsp/getVehicle.jsp?transporterId=" + a + "&plantId=" + b, true);
                 xmlhttp.send();
             }
@@ -187,7 +201,7 @@
                     </div>    
                     <br>
 
-                        <form role="form" name="mapping" action="">
+                        <form role="form" name="mapping" action="" method="post">
                             <div class="form-group">
                                 <label id="dname" for="drivername" style="display:none;">Driver Name:</label>
                                 <input type="text" class="form-control" id="drivername" name="drivername" value="" style="display:none;" />

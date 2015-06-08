@@ -36,6 +36,42 @@
                         document.vehicle.action = "Home";
                     else if(button.id == "next")
                     {
+                        var input = document.forms["vehicle"]["vid"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.border="none";
+                        
+                        var input = document.forms["vehicle"]["TChasisNo"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.borderColor="blue";
+                        
+                        var input = document.forms["vehicle"]["TVehicleType"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.borderColor="blue";
+                        
+                        var input = document.forms["vehicle"]["ILoadCapacity"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.borderColor="blue";
+                        
+                        var input = document.forms["vehicle"]["TNationalPermit"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.borderColor="blue";
+                        
+                        var input = document.forms["vehicle"]["dtLicenseExpiryDate"];
+                        if(input.value == '')
+                            input.style.borderColor="red";
+                        else
+                            input.style.borderColor="blue";
+                        
                         var number = /^\d+$/;
                         var a = document.forms["vehicle"]["ILoadCapacity"].value;
                         if (!number.test(a))

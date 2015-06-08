@@ -17,6 +17,7 @@
         <script src="js/jquery-min.js" type="text/javascript"></script>
         
     </head>
+    <body>
     <div class="container">
         <div class="jumbotron">
             <h2 style="text-align: center">Login Here</h2>
@@ -46,4 +47,5 @@
             </div>    
         </div>
     </div>
+    </body>
 </html>
