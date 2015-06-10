@@ -26,11 +26,18 @@ pageEncoding="ISO-8859-1"%>
                //hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)stack.findValue("user");
                
                Map sesion = (Map)ActionContext.getContext().getSession();
-               hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
-               
-               menu.GenerateMenuHtml g=new menu.GenerateMenuHtml(user.getSUsername());
-               out.println(g.getHtml());
+               if(sesion.get("user")==null)
+                {
+                    RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                    rd.forward(request, response);
+                }
+                else
+                {
+                    hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
+
+                    menu.GenerateMenuHtml g=new menu.GenerateMenuHtml(user.getSUsername());
+                    out.println(g.getHtml());
+                }
            %>
-        </h3>
    
 

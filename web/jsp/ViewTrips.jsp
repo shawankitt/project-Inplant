@@ -32,7 +32,7 @@ pageEncoding="ISO-8859-1"%>
             }*/
         </script>
         <%
-            /*response.setHeader("Cache-Control","no-cache");
+           /* response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
             response.setDateHeader("Expires", 0);
             response.setHeader("Pragma","no-cache");*/
@@ -45,22 +45,21 @@ pageEncoding="ISO-8859-1"%>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div id="scroll" >
-                <%   
-                    ValueStack stack = ActionContext.getContext().getValueStack();
-                    Map sesion = (Map)ActionContext.getContext().getSession();
-                    hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
-                    if(user == null)
-                    {
-                        request.setAttribute("Error", "Login to continue...");
-                        RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-                        rd.forward(request, response);
-                    }
-                    else
-                    {
-                        liveView.LiveView l = new liveView.LiveView();
-                        out.println(l.getLiveView(user));
-                    }
-
+                <%  
+                    
+                        ValueStack stack = ActionContext.getContext().getValueStack();
+                        Map sesion = (Map)ActionContext.getContext().getSession();
+                        if(sesion.get("user")==null)
+                        {
+                            RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                            rd.forward(request, response);
+                        }
+                        else
+                        {
+                            hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
+                            liveView.LiveView l = new liveView.LiveView();
+                            out.println(l.getLiveView(user));
+                        }
                %>
             </div>
         </div>

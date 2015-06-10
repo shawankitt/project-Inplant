@@ -128,6 +128,15 @@
                 document.mapping.submit();
             }
         </script>
+        <%
+            ValueStack stack = ActionContext.getContext().getValueStack();
+            Map sesion = (Map)ActionContext.getContext().getSession();
+            if(sesion.get("user")==null)
+            {
+                RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                rd.forward(request, response);
+            }
+        %>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
@@ -137,8 +146,6 @@
                             <label for="card">Card No. </label>
                             <select class="form-control" id="Card">
                             <%
-                                ValueStack stack = ActionContext.getContext().getValueStack();
-                                Map sesion = (Map)ActionContext.getContext().getSession();
                                 hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
                             %>
                             <%

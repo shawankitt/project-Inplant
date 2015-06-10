@@ -60,6 +60,7 @@ public class Card_handler {
         }
         finally
         {
+            session.flush();
             session.close();
            if(error_flag==false) return "Success";
            else         return "Failure";
@@ -85,6 +86,7 @@ public class Card_handler {
         }
         finally
         {
+            session.flush();
             session.close();
              return c;
         }     

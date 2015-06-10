@@ -13,8 +13,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery-min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script>
+            function backbutton()
+            {
+                /*if(window.event)
+                {
+                    if(window.event.clientX < 40 && window.event.clientY < 0)
+                        window.location.href="Login.jsp";
+                }
+                else
+                {
+                    if(event.currentTarget.performance.navigation.type == 1)
+                        window.open("Login.jsp");
+                }*/
+                alert("hello");
+            }
+        </script>
         <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
@@ -22,7 +38,7 @@
             response.setHeader("Pragma","no-cache");
         %>
     </head>
-    <body>
+    <body onbeforeunload="backbutton()">
     <div class="container">
         <div class="jumbotron">
             <h2 style="text-align: center">Login Here</h2>
