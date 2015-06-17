@@ -14,9 +14,28 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import static java.lang.System.out;
 import java.math.BigDecimal;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Savepoint;
+import java.sql.Statement;
+import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.Executor;
+import javax.resource.spi.work.Work;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -26,7 +45,7 @@ import org.hibernate.Transaction;
  */
 public class Path_handler extends sample_helper{
 
-    public String insert_into_table(int plant_id, String TName, ArrayList arr)
+    public String insert_into_table(int plant_id, String TName, String path)
   {
         boolean error_flag=false;
         Session session = hibernate.folder.HibernateUtil.getSessionFactory().openSession();
@@ -45,16 +64,23 @@ public class Path_handler extends sample_helper{
             byte[] buf = bos.toByteArray();
             ep.setIArrPath(buf);*/
             
-            Plant_handler ph=new Plant_handler();
+            /*
+            Array sqlArray=con.createArrayOf("integer", path);*/
+            List<Object[]> r = null;
+            //Array a = new Array();
+            String sql = "select * from pr_inplant.fn_path_entry("+plant_id+",Array["+path+"] , '"+ TName +"')"; 
+            r = session.createSQLQuery(sql).list();
+                
+            /*Plant_handler ph=new Plant_handler();
             TblPlant plant= ph.get_tuple(17);
          
             if(plant!=null)
                    ep.setTblPlant(plant);
-            else    throw new Exception();
+            else    throw new Exception();*/
             
             
                                            
-            session.save(ep);
+            //session.save(ep);
             tx.commit();
         }
         catch(Exception e)

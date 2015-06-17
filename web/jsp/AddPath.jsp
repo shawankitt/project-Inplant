@@ -25,13 +25,16 @@
         <script>
             function pathaction(button)
             {
+                var temp = document.getElementById("addepos").value;
+                temp=temp.substring(0,temp.length - 1);
+                document.getElementById("addepos").value = temp;
                 if (button.id === "add")
                 {
-                    document.path.action = "AddPath";
+                    document.path.action = "insertpath";
                 }
-                else if (button.id === "home")
+                else if (button.id === "next")
                 {
-                    document.path.action = "Home";
+                    document.path.action = "insertpathnext";
                 }
                 document.path.submit();
             }
@@ -39,7 +42,7 @@
             {
                 var dropdown = document.getElementById("epos");
                 var temp = document.getElementById("addepos").value + dropdown.value;
-                temp = temp + "#";
+                temp = temp + ",";
                 document.getElementById("addepos").value = temp;
                 alert(temp);
                 dropdown.options[dropdown.selectedIndex]=null;
@@ -48,11 +51,6 @@
         <%
                 ValueStack stack = ActionContext.getContext().getValueStack();
                 Map sesion = (Map)ActionContext.getContext().getSession();
-                if(sesion.get("user")==null)
-                {
-                    RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-                    rd.forward(request, response);
-                }
                 hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
             %>
         <div class="container">
@@ -68,7 +66,7 @@
                             <%
                                 out.println("<option>Choose Epos From</option>");
                                 EposList t = new EposList();
-                                List<hibernate.pojo.TblEpos> eposList = t.getEposList("17");
+                                List<hibernate.pojo.TblEpos> eposList = t.getEposList(user.getTblPlant().getIPlantId().toString());
                                 for (int i = 0; i < eposList.size(); i++) {
                                     out.println("<option value=\"" + eposList.get(i).getIMachineId() + "\">" + eposList.get(i).getTGatewayName() + "</option>");
                                 }

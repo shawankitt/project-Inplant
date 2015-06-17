@@ -60,7 +60,7 @@ pageEncoding="ISO-8859-1"%>
                             liveView.LiveView l = new liveView.LiveView();
                             out.println(l.getLiveView(user));
                         }
-               %>
+                %>
             </div>
         </div>
     </body>

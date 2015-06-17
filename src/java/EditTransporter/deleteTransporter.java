@@ -26,7 +26,11 @@ public class deleteTransporter {
         try 
         {
             org.hibernate.Transaction tx = session.beginTransaction();
-            Query q = session.createQuery("delete hibernate.pojo.TblTransporter where ITransporterId="+transporterId);
+            Query q = session.createQuery("delete from hibernate.pojo.TblDriver where i_transporter_id="+transporterId);
+            q.executeUpdate();
+            q = session.createQuery("delete from hibernate.pojo.TblVehicle where i_transporter_id="+transporterId);
+            q.executeUpdate();
+            q = session.createQuery("delete from hibernate.pojo.TblTransporter where ITransporterId="+transporterId);
             q.executeUpdate();
             tx.commit();
         }
@@ -44,6 +48,7 @@ public class deleteTransporter {
     public static void main(String args[])
     {
         deleteTransporter e=new deleteTransporter();
+        e.del(new BigDecimal("28"));
         //e.end(BigDecimal.ONE);
     }
     

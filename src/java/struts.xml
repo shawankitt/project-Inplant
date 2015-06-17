@@ -11,41 +11,7 @@
             <result name="success">/jsp/ViewTrips.jsp</result>
         </action>
         
-        <action name="loggedIn-AddTrip" >
-            <result>/jsp/Mapping.jsp</result>
-        </action>
         
-        <action name="loggedIn-AddVehicle" >
-            <result>/jsp/AddVehicle.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddDriver">
-            <result>/jsp/AddDriver.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddTransporter" >
-            <result>/jsp/AddTransporter.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddEpos" >
-            <result>/jsp/AddEpos.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddCard" >
-            <result>/jsp/AddCard.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddLink" >
-            <result>/jsp/AddLink.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddPath" >
-            <result>/jsp/AddPath.jsp</result>
-        </action>
-        
-        <action name="loggedIn-AddProcess" >
-            <result>/jsp/AddProcess.jsp</result>
-        </action>
         
         <action name="loggedIn-*" >
             <result name="success">/jsp/{1}.jsp</result>

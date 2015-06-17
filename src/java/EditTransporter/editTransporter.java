@@ -29,7 +29,7 @@ public class editTransporter {
         getTransporterString+="<table border=1 width=\"100%\" id=\"TransporterList\">";
         getTransporterString+="<thead>";
         getTransporterString+="<tr>";
-        List<hibernate.pojo.TblTransporter> transporterList = transporterListVar.getTransporterList();
+        List<hibernate.pojo.TblTransporter> transporterList = transporterListVar.getTransporterList(user.getTblPlant().getIPlantId().toString());
         getTransporterString+="<th>Name</th>";
         getTransporterString+="<th>Address</th>";
         getTransporterString+="<th>City</th>";
@@ -56,7 +56,7 @@ public class editTransporter {
             getTransporterString+=("<td>" + i.getTTransporterEmailId() + "</td>");
             if(user.getBPlantModify()){
                 getTransporterString+=("<td><button id=\"" + i.getITransporterId() + "\" value=\"" + rowId + "\" type=\"button\" onclick=\"modifyTransporter(this)\"> Modify </button> </td>");
-                getTransporterString+=("<td><button id=\"" + i.getITransporterId() + "\" value=\"" + rowId + "\" type=\"button\" onclick=\"deltransporter(this)\"> Delete </button> </td>");
+                getTransporterString+=("<td><button id=\"" + i.getITransporterId() + "\" value=\"" + rowId + "\" type=\"button\" onclick=\"delTransporter(this)\"> Delete </button> </td>");
             }
             getTransporterString+="</tr>";
             rowId++;

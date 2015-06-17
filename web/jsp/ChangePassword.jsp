@@ -14,11 +14,16 @@
         <title>Login</title>
     </head>
     <body>
-         <%
-       Map sesion = (Map)ActionContext.getContext().getSession();
-       hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
-       out.print("***"+user.getSUsername()+"***"+" in "+request.getRequestURI());
-       %>
+        <%
+            Map sesion = (Map)ActionContext.getContext().getSession();
+            hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
+            if(sesion.get("user")==null)
+            {
+                RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                rd.forward(request, response);
+            }
+            
+        %>
     </body>
     
 </html>

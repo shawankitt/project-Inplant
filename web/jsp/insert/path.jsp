@@ -24,10 +24,17 @@
         <title>Path</title>
     </head>
     <body>
-
+        <%
+        ValueStack stack = ActionContext.getContext().getValueStack();
+        Map sesion = (Map) ActionContext.getContext().getSession();
+        hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers) sesion.get("user");
+        %>
         <script>
             function pathaction(button)
             {
+                var temp = document.getElementById("addepos").value;
+                temp=temp.substring(0,temp.length - 1);
+                document.getElementById("addepos").value = temp;
                 if (button.id === "add")
                 {
                     document.path.action = "insertpath";
@@ -42,17 +49,13 @@
             {
                 var dropdown = document.getElementById("epos");
                 var temp = document.getElementById("addepos").value + dropdown.value;
-                temp = temp + "#";
+                temp = temp + ",";
                 document.getElementById("addepos").value = temp;
                 alert(temp);
                 dropdown.options[dropdown.selectedIndex]=null;
             }
         </script>
-        <%
-                ValueStack stack = ActionContext.getContext().getValueStack();
-                Map sesion = (Map)ActionContext.getContext().getSession();
-                hibernate.pojo.TblUsers user = (hibernate.pojo.TblUsers)sesion.get("user");
-            %>
+        
         <div class="container">
             <div class="row">
                 <div class="jumbotron">
@@ -66,7 +69,7 @@
                             <%
                                 out.println("<option>Choose Epos From</option>");
                                 EposList t = new EposList();
-                                List<hibernate.pojo.TblEpos> eposList = t.getEposList("17");
+                                List<hibernate.pojo.TblEpos> eposList = t.getEposList(user.getTblPlant().getIPlantId().toString());
                                 for (int i = 0; i < eposList.size(); i++) {
                                     out.println("<option value=\"" + eposList.get(i).getIMachineId() + "\">" + eposList.get(i).getTGatewayName() + "</option>");
                                 }
@@ -78,7 +81,7 @@
                         <div class="form-group">
                             <label>Path Name</label>
                             <input class="form-control" type="text" name="TName"/><br>
-                            <input type="hidden" name="Id" id="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString()); %>" >
+                            <input type="hidden" name="Id" id="Id" value="<% out.print(user.getTblPlant().getIPlantId().toString());%>" >
                             <input type="hidden" name="addepos" id="addepos" value=""/>
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="addpath" value="Add to path" onClick = "addPath()" /><br><br>          
                             <input type="button" class="btn btn-info col-sm-12" name="add" id="add" value="Add More Paths" onClick = "pathaction(this)" /><br><br>
