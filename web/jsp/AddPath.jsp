@@ -25,6 +25,11 @@
         <script>
             function pathaction(button)
             {
+                if(button.id === "home")
+                {
+                    document.path.action = "Home";
+                    document.path.submit();
+                }
                 var temp = document.getElementById("addepos").value;
                 temp=temp.substring(0,temp.length - 1);
                 document.getElementById("addepos").value = temp;

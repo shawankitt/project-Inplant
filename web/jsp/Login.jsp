@@ -15,22 +15,6 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script>
-            function backbutton()
-            {
-                /*if(window.event)
-                {
-                    if(window.event.clientX < 40 && window.event.clientY < 0)
-                        window.location.href="Login.jsp";
-                }
-                else
-                {
-                    if(event.currentTarget.performance.navigation.type == 1)
-                        window.open("Login.jsp");
-                }*/
-                alert("hello");
-            }
-        </script>
         <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
@@ -38,7 +22,7 @@
             response.setHeader("Pragma","no-cache");
         %>
     </head>
-    <body onbeforeunload="backbutton()">
+    <body>
     <div class="container">
         <div class="jumbotron">
             <h2 style="text-align: center">Login Here</h2>
@@ -58,9 +42,9 @@
                         </div>
 
                             <input class="btn btn-success col-sm-12" type="submit" value="Login"/>
-                            <b style="text-align:center">OR</b>
+                            <!--<b style="text-align:center">OR</b>-->
                             <!--<a href="jsp/insert/index.jsp" style="color:black">Or register Here</a>-->
-                            <input class="btn btn-success col-sm-12" type="button" value="Register Here" onclick="window.location='jsp/insert/index.jsp'"/>
+                            <!--<input class="btn btn-success col-sm-12" type="button" value="Register Here" onclick="window.location='jsp/insert/index.jsp'"/> -->
                     </form>
                     <br>
                     <!--<a href="jsp/insert/index.jsp">Or register Here</a>-->
