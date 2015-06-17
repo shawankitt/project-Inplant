@@ -9,9 +9,8 @@
         
         <action name="userLogin" class="struts.action.UserLoginAction" method="execute">
             <result name="success">/jsp/ViewTrips.jsp</result>
+            <result name="invalid">/jsp/LoginError.jsp</result>
         </action>
-        
-        
         
         <action name="loggedIn-*" >
             <result name="success">/jsp/{1}.jsp</result>

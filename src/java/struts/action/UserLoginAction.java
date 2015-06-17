@@ -40,7 +40,7 @@ public class UserLoginAction {
         if(user == null)
         {
             // wrong username
-            return "invalid_username";
+            return "invalid";
         }
         
         if(user.getSPasswordMd5().equals(security.MD5.crypt(password))) // valid user
@@ -51,7 +51,7 @@ public class UserLoginAction {
         }
         else // wrong password
         {
-            return "invalid_password";
+            return "invalid";
         }
     }
     
