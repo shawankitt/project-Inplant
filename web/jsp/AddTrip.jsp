@@ -21,11 +21,41 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/jquery-min.js" type="text/javascript"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/popup.css" rel="stylesheet" type="text/css"/>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <title>Mapping</title>
     </head>
-    <body>
+    <body id="page-top">
         <script>
+            function pop(div) 
+            {
+                document.getElementById(div).style.display = 'block';
+                document.getElementById('page-top').style.overflow="hidden";
+                //temp.style.opacity="0.6"
+            }
+            function hide(div) 
+            {
+                document.getElementById(div).style.display = 'none';
+                document.getElementById('page-top').style.overflow="scroll";
+                //temp.style.opacity="1"
+            }
+            document.onkeydown = function(evt) 
+            {
+                evt = evt || window.event;
+                if (evt.keyCode == 27) {
+                        hide('popDiv');
+                }
+            };
+            window.addEventListener('mouseup', function(event)
+            {
+                var e = document.getElementById('popup');
+                if(event.target != e && event.target.parentNode != e)
+                {
+                    document.getElementById('popDiv').style.display = 'none';
+                }
+                document.getElementById('page-top').style.overflow="scroll";
+            });
+            
             function xyz()
             {
                 var xmlhttp;
@@ -204,8 +234,21 @@
                         <label for="Driver">Driver </label>
                         <select class="form-control" id="Driver" onchange="show()">
                         <option>Choose Driver </option>
-                    </select>
-                    </div>    
+                        </select>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <label>Path</label>
+                        <a class="form-control" id="link" onclick="pop('popDiv')" style="text-decoration: none">Choose Path</a>
+                    </div> 
+                        
+                    <div id="popDiv" class="ontop">
+                        <form id="popup">
+                            <label for="Path">Paths</label><br>
+                            <input type="radio" name="pathlist" value="choose path" checked/>Choose Path
+                            <input type="button" class="btn btn-info col-sm-12" name="ok" id="ok" value="Done" onClick = "hide('popDiv')" /> 
+                        </form>
+                    </div>
                     <br>
 
                         <form role="form" name="mapping" action="" method="post">
