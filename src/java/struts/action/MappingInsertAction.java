@@ -16,6 +16,7 @@ public class MappingInsertAction {
     public String vehicleid;
     public String driverid;
     public String processid;
+    public String pathid;
     public String tdate;
     public String drivername;
     public String bname;
@@ -37,6 +38,14 @@ public class MappingInsertAction {
                 ,vehicleid,Integer.parseInt(driverid),Integer.parseInt(processid),tdate);
         }
         return result;
+    }
+
+    public String getPathid() {
+        return pathid;
+    }
+
+    public void setPathid(String pathid) {
+        this.pathid = pathid;
     }
 
     public String getDrivername() {

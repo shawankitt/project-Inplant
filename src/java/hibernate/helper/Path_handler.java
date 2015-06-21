@@ -55,32 +55,25 @@ public class Path_handler extends sample_helper{
         {
            
             tx=session.beginTransaction();
-            TblPaths ep=new TblPaths();
-            ep.setTName("A");
-            /*ByteArrayOutputStream bos = new ByteArrayOutputStream() ;
-            ObjectOutputStream out = new ObjectOutputStream(bos) ;
-            out.writeObject(arr);
-            out.close();
-            byte[] buf = bos.toByteArray();
-            ep.setIArrPath(buf);*/
-            
-            /*
-            Array sqlArray=con.createArrayOf("integer", path);*/
-            List<Object[]> r = null;
-            //Array a = new Array();
+
+            /*List<Object[]> r = null;
             String sql = "select * from pr_inplant.fn_path_entry("+plant_id+",Array["+path+"] , '"+ TName +"')"; 
-            r = session.createSQLQuery(sql).list();
-                
-            /*Plant_handler ph=new Plant_handler();
-            TblPlant plant= ph.get_tuple(17);
+            r = session.createSQLQuery(sql).list();*/
+            TblPaths p =new TblPaths();
+            
+            Plant_handler ph=new Plant_handler();
+            TblPlant plant= ph.get_tuple(plant_id);
          
             if(plant!=null)
-                   ep.setTblPlant(plant);
-            else    throw new Exception();*/
+                   p.setTblPlant(plant);
+            else    throw new Exception();
+            
+            p.setTName(TName);
+            p.setIPathId(BigDecimal.ZERO);
+            p.setTArrPath(path);
             
             
-                                           
-            //session.save(ep);
+            session.save(p);
             tx.commit();
         }
         catch(Exception e)

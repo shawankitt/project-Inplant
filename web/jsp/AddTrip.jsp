@@ -4,6 +4,7 @@
     Author     : Raj-HP
 --%>
 
+<%@page import="hibernate.helper.PathList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashMap"%>
@@ -35,21 +36,35 @@
             }
             function hide(div) 
             {
+                /*var x = document.getElementsByName("pathlist");
+                var a = document.getElementById("link");
+                for(var i = 0; i < x.length; i++)
+                    if(x[i].checked)
+                        a.innerHTML = x[i].value;*/
                 document.getElementById(div).style.display = 'none';
                 document.getElementById('page-top').style.overflow="scroll";
                 //temp.style.opacity="1"
             }
+            
+            function radio(input)
+            {
+                document.getElementById("pathid").value = input.id;
+                var a = document.getElementById("link");
+                a.innerHTML = input.value;
+                alert(document.getElementById("pathid").value);
+            }
             document.onkeydown = function(evt) 
             {
                 evt = evt || window.event;
-                if (evt.keyCode == 27) {
+                if (evt.keyCode === 27) {
                         hide('popDiv');
                 }
             };
             window.addEventListener('mouseup', function(event)
             {
                 var e = document.getElementById('popup');
-                if(event.target != e && event.target.parentNode != e)
+                
+                if(event.target !== e && event.target.parentNode !== e)
                 {
                     document.getElementById('popDiv').style.display = 'none';
                 }
@@ -132,6 +147,7 @@
                 document.getElementById("vehicleid").value=document.getElementById("Vehicle").value;
                 document.getElementById("driverid").value=document.getElementById("Driver").value;
                 document.getElementById("processid").value=document.getElementById("Process").value;
+                document.getElementById("pathid").value=document.getElementById("Process").value;
                 
                 document.mapping.action="starttrip";
                 document.mapping.submit();
@@ -238,15 +254,24 @@
                     </div> 
                     
                     <div class="form-group">
-                        <label>Path</label>
+                        <label for="link">Path</label>
                         <a class="form-control" id="link" onclick="pop('popDiv')" style="text-decoration: none">Choose Path</a>
                     </div> 
                         
                     <div id="popDiv" class="ontop">
                         <form id="popup">
-                            <label for="Path">Paths</label><br>
-                            <input type="radio" name="pathlist" value="choose path" checked/>Choose Path
-                            <input type="button" class="btn btn-info col-sm-12" name="ok" id="ok" value="Done" onClick = "hide('popDiv')" /> 
+                            <label for="Path" id="heading">Select Path</label><br>
+                            <div id="list">
+                            <!--<input type="radio" name="pathlist" value="choose path" checked/>Choose Path-->
+                            <%
+                                //out.println("<option>Choose Transporter</option>");
+                                PathList path=new PathList();
+                                List<hibernate.pojo.TblPaths> pathList=path.getPathList(user.getTblPlant().getIPlantId().toString());
+                                for(int i = 0; i < pathList.size(); i++)
+                                    out.println("<label class=\"plist\"><input type=\"radio\" name=\"pathlist\" id=\""+pathList.get(i).getIPathId()+"\" value=\""+pathList.get(i).getTName()+ "\" onclick=\"radio(this)\"" +"/><span><span></span></span>"+ pathList.get(i).getTArrPath()+"</label>");
+                            %>
+                            <!--<input type="button" class="btn btn-info col-sm-12" name="ok" id="ok" value="Done" onClick = "hide('popDiv')" />--> 
+                            </div>
                         </form>
                     </div>
                     <br>
@@ -262,7 +287,8 @@
                             <input type="hidden" name="transporterid" id="transporterid" value=""/>
                             <input type="hidden" name="vehicleid" id="vehicleid" value=""/>
                             <input type="hidden" name="driverid" id="driverid" value=""/>
-                            <input type="hidden" name="processid" id="processid" value=""/>  
+                            <input type="hidden" name="processid" id="processid" value=""/> 
+                            <input type="hidden" name="pathid" id="pathid" value=""/> 
                             <div class="form-group">
                                 <label>Date : </label>
                                 <input class="form-control" type="date" name="tdate">
