@@ -5,6 +5,7 @@
  */
 package hibernate.helper;
 
+import hibernate.pojo.TblEpos;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -45,7 +46,16 @@ public class PathList {
     public static void main(String[] args) {
         PathList p =new PathList();
         List<hibernate.pojo.TblPaths> pl = p.getPathList("23");
+        Epos_handler e = new Epos_handler();
         for(int i=0;i<pl.size();i++)
-            System.out.println(pl.get(i).getTName());
+        {
+            System.out.println(pl.get(i).getTName() + " " + pl.get(i).getTArrPath());
+            String[] s = pl.get(i).getTArrPath().split(",");
+            for(int j=0 ; j<s.length ; j++)
+            {
+                TblEpos epos = e.get_tuple(Integer.parseInt(s[j]));
+                System.out.println(epos.getIGateNo());
+            }
+        }
     }
 }

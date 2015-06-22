@@ -93,5 +93,30 @@ public class Path_handler extends sample_helper{
         
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    TblPaths get_tuple(int path_id) {
+        Session session=hibernate.folder.HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        TblPaths c = new TblPaths();
+        try
+        {
+           
+            tx=session.beginTransaction();
+            c=(TblPaths) session.get(TblPaths.class,new BigDecimal(path_id));
+        }
+        catch(Exception e)
+        {
+             if (tx != null) {
+                tx.rollback();
+            e.printStackTrace();
+        }
+        }
+        finally
+        {
+            session.flush();
+            session.close();
+            return c;
+        }     
+    }
     
 }

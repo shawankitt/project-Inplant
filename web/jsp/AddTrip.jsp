@@ -4,6 +4,8 @@
     Author     : Raj-HP
 --%>
 
+<%@page import="hibernate.helper.Epos_handler"%>
+<%@page import="hibernate.pojo.TblEpos"%>
 <%@page import="hibernate.helper.PathList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
@@ -147,7 +149,7 @@
                 document.getElementById("vehicleid").value=document.getElementById("Vehicle").value;
                 document.getElementById("driverid").value=document.getElementById("Driver").value;
                 document.getElementById("processid").value=document.getElementById("Process").value;
-                document.getElementById("pathid").value=document.getElementById("Process").value;
+                //document.getElementById("pathid").value=document.getElementById("Process").value;
                 
                 document.mapping.action="starttrip";
                 document.mapping.submit();
@@ -216,6 +218,67 @@
                             %>
                             </select>
                         </div>
+                            
+                            
+                        <div class="form-group">
+                            <label for="link">Path</label>
+                            <a class="form-control" id="link" onclick="pop('popDiv')" style="text-decoration: none">Choose Path</a>
+                        </div> 
+
+
+                            <div id="popDiv" class="ontop">
+                        <form id="popup">
+                            <label for="Path" id="heading">Select Path</label><br>
+                            <div id="list">
+                            <!--<input type="radio" name="pathlist" value="choose path" checked/>Choose Path-->
+                            <%
+                                //out.println("<option>Choose Transporter</option>");
+                                PathList path=new PathList();
+                                List<hibernate.pojo.TblPaths> pathList=path.getPathList(user.getTblPlant().getIPlantId().toString());
+                                for(int i = 0; i < pathList.size(); i++)
+                                {
+                                    String str = pathList.get(i).getTArrPath();
+                                    String temp[] = str.split(",");
+                                    String res = new String();
+                                    int id;
+                                    /*hibernate.helper.Epos_handler EposList = new Epos_handler();
+                                    if(temp[0].charAt(0) == '-')
+                                    {
+                                        temp[0] = temp[0].substring(1);
+                                        id = (-1)*(Integer.parseInt(temp[0]));
+                                    }
+                                    else
+                                        id = Integer.parseInt(temp[0]);
+                                    hibernate.pojo.TblEpos epos = new TblEpos();
+                                    epos = EposList.get_tuple(id);
+                                    System.out.println(epos.getTGatewayName());
+                                    res+=epos.getTGatewayName();
+                                    res+="->";*/
+                                    for(int j = 0; j<temp.length; j++)
+                                    {
+                                        hibernate.helper.Epos_handler EposList = new Epos_handler();
+                                        if(temp[j].charAt(0) == '-')
+                                        {
+                                            //temp[j] = temp[j].substring(1);
+                                            id = (-1)*(Integer.parseInt(temp[j].substring(1)));
+                                        }
+                                        else
+                                            id = Integer.parseInt(temp[j]);
+                                        hibernate.pojo.TblEpos epos = EposList.get_tuple(id);
+                                        res+=epos.getTGatewayName();
+                                        if(j<(temp.length-1))
+                                            res+="->";
+                                    }
+                                    out.println("<label class=\"plist\"><input type=\"radio\" name=\"pathlist\" id=\""+pathList.get(i).getIPathId()+"\" value=\""+pathList.get(i).getTName()+ "\" onclick=\"radio(this)\"" +"/><span><span></span></span>"+ res +"</label>");
+                                    //res="";
+                                    System.out.println(res);
+                                    //out.println("<label class=\"plist\"><input type=\"radio\" name=\"pathlist\" id=\""+pathList.get(i).getIPathId()+"\" value=\""+pathList.get(i).getTName()+ "\" onclick=\"radio(this)\"" +"/><span><span></span></span>"+ pathList.get(i).getTArrPath() +"</label>");
+                                }
+                            %>
+                            <!--<input type="button" class="btn btn-info col-sm-12" name="ok" id="ok" value="Done" onClick = "hide('popDiv')" />--> 
+                            </div>
+                        </form>
+                    </div>
                     <div class="form-group">
                         <label for="Process">Process Type </label>
                         <select class="form-control" id="Process">
@@ -253,27 +316,6 @@
                         </select>
                     </div> 
                     
-                    <div class="form-group">
-                        <label for="link">Path</label>
-                        <a class="form-control" id="link" onclick="pop('popDiv')" style="text-decoration: none">Choose Path</a>
-                    </div> 
-                        
-                    <div id="popDiv" class="ontop">
-                        <form id="popup">
-                            <label for="Path" id="heading">Select Path</label><br>
-                            <div id="list">
-                            <!--<input type="radio" name="pathlist" value="choose path" checked/>Choose Path-->
-                            <%
-                                //out.println("<option>Choose Transporter</option>");
-                                PathList path=new PathList();
-                                List<hibernate.pojo.TblPaths> pathList=path.getPathList(user.getTblPlant().getIPlantId().toString());
-                                for(int i = 0; i < pathList.size(); i++)
-                                    out.println("<label class=\"plist\"><input type=\"radio\" name=\"pathlist\" id=\""+pathList.get(i).getIPathId()+"\" value=\""+pathList.get(i).getTName()+ "\" onclick=\"radio(this)\"" +"/><span><span></span></span>"+ pathList.get(i).getTArrPath()+"</label>");
-                            %>
-                            <!--<input type="button" class="btn btn-info col-sm-12" name="ok" id="ok" value="Done" onClick = "hide('popDiv')" />--> 
-                            </div>
-                        </form>
-                    </div>
                     <br>
 
                         <form role="form" name="mapping" action="" method="post">

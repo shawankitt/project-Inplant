@@ -12,11 +12,11 @@ package struts.action;
 public class MappingInsertAction {
     public String Id;
     public String cardid;
+    public String pathid;
     public String transporterid;
     public String vehicleid;
     public String driverid;
     public String processid;
-    public String pathid;
     public String tdate;
     public String drivername;
     public String bname;
@@ -26,16 +26,16 @@ public class MappingInsertAction {
         hibernate.helper.Mapping_handler m = new hibernate.helper.Mapping_handler();
         String result;
         boolean b;
-        b = Integer.parseInt(bname) == 1 ;
+        b = Integer.parseInt(bname) == 1;
         if(b)
         {
             result = m.insert_into_handler(Integer.parseInt(Id) ,cardid,Integer.parseInt(transporterid)
-                ,vehicleid,drivername,Integer.parseInt(processid),tdate);
+                ,vehicleid,drivername,Integer.parseInt(processid),tdate,Integer.parseInt(pathid));
         }
         else
         {
-            result = m.insert_into_handler(Integer.parseInt(Id) ,cardid,Integer.parseInt(transporterid)
-                ,vehicleid,Integer.parseInt(driverid),Integer.parseInt(processid),tdate);
+            result = m.insert_into_table(Integer.parseInt(Id) ,cardid,Integer.parseInt(transporterid)
+                ,vehicleid,Integer.parseInt(driverid),Integer.parseInt(processid),tdate,Integer.parseInt(pathid));
         }
         return result;
     }

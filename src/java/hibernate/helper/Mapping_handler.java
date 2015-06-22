@@ -12,8 +12,10 @@ import hibernate.pojo.TblPlant;
 import hibernate.pojo.TblTransporter;
 import hibernate.pojo.TblMapping;
 import hibernate.pojo.TblCard;
+import hibernate.pojo.TblPaths;
 import hibernate.pojo.TblProcess;
 import hibernate.pojo.TblVehicle;
+import hibernate.pojo.TblLivePath;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +33,7 @@ public class Mapping_handler extends sample_helper
     
     
     
-    public String insert_into_handler(int plant_id,String cardid,int tr_id,String vehicleid,int driverid,int processid,String tdate)
+    public String insert_into_table(int plant_id,String cardid,int tr_id,String vehicleid,int driverid,int processid,String tdate,int path_id)
     {
         boolean error_flag = false;
         session = hibernate.folder.HibernateUtil.getSessionFactory().openSession();
@@ -65,6 +67,12 @@ public class Mapping_handler extends sample_helper
                 
                 Process_handler p = new Process_handler();
                 TblProcess process = p.get_tuple(processid);
+                
+                Path_handler pth = new Path_handler();
+                TblPaths path = pth.get_tuple(path_id);
+                
+                Livepath_handler l =new Livepath_handler();
+                TblLivePath lp = l.insert_into_table(plant_id, path.getTArrPath());
 
                 if (plant != null)
                 {
@@ -106,9 +114,17 @@ public class Mapping_handler extends sample_helper
                     throw new Exception("Foreign Key Plant_id Dependency Failed ");
                 }
                 
-                if (driver != null)
+                if (Card != null)
                 {
                     drv.setTblCard(Card);//Transp(plant);
+                }
+                else
+                {
+                    throw new Exception("Foreign Key Plant_id Dependency Failed ");
+                }
+                if (lp != null)
+                {
+                    drv.setTblLivePath(lp);//Transp(plant);
                 }
                 else
                 {
@@ -155,7 +171,7 @@ public class Mapping_handler extends sample_helper
 
     }
 
-    public String insert_into_handler(int plant_id, String cardid, int tr_id, String vehicleid, String drivername, int processid, String tdate) {
+    public String insert_into_handler(int plant_id, String cardid, int tr_id, String vehicleid, String drivername, int processid, String tdate,int path_id) {
         boolean error_flag = false;
         session = hibernate.folder.HibernateUtil.getSessionFactory().openSession();
 
@@ -186,6 +202,12 @@ public class Mapping_handler extends sample_helper
                 
                 Process_handler p = new Process_handler();
                 TblProcess process = p.get_tuple(processid);
+                
+                Path_handler pth = new Path_handler();
+                TblPaths path = pth.get_tuple(path_id);
+                
+                Livepath_handler l =new Livepath_handler();
+                TblLivePath lp = l.insert_into_table(plant_id, path.getTArrPath());
 
                 if (plant != null)
                 {
@@ -221,6 +243,14 @@ public class Mapping_handler extends sample_helper
                 if (Card != null)
                 {
                     drv.setTblCard(Card);//Transp(plant);
+                }
+                else
+                {
+                    throw new Exception("Foreign Key Plant_id Dependency Failed ");
+                }
+                if (lp != null)
+                {
+                    drv.setTblLivePath(lp);
                 }
                 else
                 {

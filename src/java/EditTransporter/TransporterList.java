@@ -5,6 +5,7 @@
  */
 package EditTransporter;
 
+import hibernate.pojo.TblTransporter;
 import hibernate.pojo.TblUsers;
 import java.util.Collections;
 import java.util.List;
@@ -63,7 +64,7 @@ public class TransporterList {
     }
     public static void main(String args[])
     {
-        TransporterList t = new TransporterList();
-        System.out.println(t.getTransporterList("17"));
+        
+        
     }
 }
